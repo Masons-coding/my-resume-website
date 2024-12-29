@@ -24,6 +24,16 @@
   font-family: "avenir-next", sans-serif;
   align-self: center;
   font-size: 1rem;
-  width: 100%;
   text-align: center;
+}
+
+.github-logo {
+  width: 3rem;
+  cursor: grab;
+}
+
+.footer-github-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

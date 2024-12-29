@@ -54,7 +54,7 @@ function weatherApiLinkClick() {
                 <div className="project-container">
                     <h3 className="project-header-text">Weather API</h3>
                     <img  className="project-logo" src={weatherLogo} alt="Weather Logo"/>
-                    <p className="project-text">A Python-based weather application which leverages an online weather API, <a className="weather-link" onClick={weatherApiLinkClick}>Openweathermap</a>, to provide real-time weather information for cities worldwide. Users can input the name of a city, and the application sends a request to the API, retrieving data such as temperature, humidity, wind speed, and weather conditions</p>
+                    <p className="project-text">A Python-based weather application which leverages an online weather API, <span className="weather-link" onClick={weatherApiLinkClick}>Openweathermap</span>, to provide real-time weather information for cities worldwide. Users can input the name of a city, and the application sends a request to the API, retrieving data such as temperature, humidity, wind speed, and weather conditions</p>
                     <img onClick={weatherGitClick} className="github-logo" src={githubLogo} alt="Github Logo"/>
                     <div className="used-container">
                         <p className="used-text">Tech-stack:</p>

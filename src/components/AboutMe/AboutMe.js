@@ -12,6 +12,8 @@ import languages from "../../assets/images/languages.png";
 
 import githubLogo from "../../assets/images/github-icon.svg";
 
+import masonImg from "../../assets/images/MasonPicture.jpg";
+
 const AboutMe = () => {
 
 function linkedInClick() {
@@ -27,7 +29,7 @@ function gitClick() {
             <div className="title-container">
                 <h1 className="welcome-message">HI! I'm Mason Clarke</h1>
                 <p className="my-title"> A Full Stack Web Developer | React | JavaScript | SCSS | NodeJS | ExpressJS | KnexJS | MySQL</p>
-            <img  className="programmer-img" src={programmer} alt="Programmer"/>
+            <img  className="programmer-img" src={masonImg} alt="Programmer"/>
             <div className="my-contact-container">
                 <div className="social-container">
                     <p className="social-text">Email:</p>

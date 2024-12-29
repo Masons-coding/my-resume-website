@@ -2,8 +2,6 @@ import './AboutMe.scss';
 
 import linkedInLogo from "../../assets/images/Linked-In-Logo.svg";
 
-import programmer from "../../assets/images/programmer.png";
-
 import technologies from "../../assets/images/technologies.png";
 
 import libraries from "../../assets/images/libraries.png";

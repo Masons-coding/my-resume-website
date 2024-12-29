@@ -1,0 +1,129 @@
+@use "../../styles/partials/mixins.scss" as *;
+@use "../../styles/partials/letters" as *;
+
+.projects-container {
+  background-color: hsl(231.2 84% 4.9%);
+  height: fit-content;
+  padding: 1rem;
+}
+
+.projects-header {
+  color: #ffffff;
+  font-family: monospace;
+  align-self: center;
+  font-size: 2rem;
+  border-bottom: 4px solid #00adff;
+  margin-bottom: 2rem;
+  font-weight: bold;
+
+  @include mobile {
+    font-size: 2rem;
+  }
+
+  @include mobile-small {
+    font-size: 1rem;
+  }
+}
+
+.project-logo {
+  width: 9rem;
+  cursor: grab;
+}
+
+.all-projects-container {
+  display: flex;
+  justify-content: space-evenly;
+
+  @include tablet {
+    gap: 2rem;
+  }
+
+  @include mobile {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.project-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  border: 4px solid #00adff;
+  border-radius: 1rem;
+  width: 20rem;
+  padding: 1rem;
+
+  @include mobile {
+    width: 18rem;
+  }
+}
+
+.project-text {
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-family: "avenir-next", sans-serif;
+  text-align: center;
+  max-width: 29ch;
+}
+
+.project-text-git {
+  color: #00adff;
+  font-size: 0.9rem;
+  font-family: "avenir-next", sans-serif;
+  text-align: center;
+  max-width: 29ch;
+}
+
+.project-header-text {
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-family: monospace;
+  text-align: center;
+}
+
+.weather-link {
+  color: #00adff;
+  font-size: 0.9rem;
+  font-family: "avenir-next", sans-serif;
+  text-align: center;
+  cursor: grab;
+  text-decoration: none;
+}
+
+.github-link {
+  cursor: grab;
+  text-decoration: none;
+}
+
+.github-logo {
+  width: 3rem;
+  cursor: grab;
+}
+
+.github-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.used-text {
+  color: #e34f26;
+  font-family: monospace;
+  font-size: 1.2rem;
+}
+
+.used-stack-text {
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-family: "avenir-next", sans-serif;
+  text-align: center;
+}
+
+.used-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}

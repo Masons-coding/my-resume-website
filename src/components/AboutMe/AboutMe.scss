@@ -1,0 +1,218 @@
+@use "../../styles/partials/mixins.scss" as *;
+@use "../../styles/partials/letters" as *;
+
+.about-me {
+  background-color: hsl(231.2 84% 4.9%);
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4rem;
+  padding: 4rem 1rem 0rem 1rem;
+}
+
+.title-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.welcome-message {
+  color: #ffffff;
+  font-family: monospace;
+  align-self: center;
+  font-size: 3rem;
+
+  @include mobile {
+    font-size: 1.5rem;
+    width: 20ch;
+  }
+}
+
+.my-title {
+  color: #ffffff;
+  font-family: "avenir-next", sans-serif;
+  align-self: center;
+  font-size: 1rem;
+
+  @include tablet-small {
+    text-align: center;
+    width: 40ch;
+  }
+
+  @include mobile {
+    font-size: 1rem;
+    width: 31ch;
+  }
+}
+
+.my-contact-container {
+  color: #ffffff;
+  font-size: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  font-family: "avenir-next", sans-serif;
+
+  @include mobile-medium {
+    flex-direction: column;
+  }
+}
+
+.social-text {
+  color: #e34f26;
+  font-size: 1rem;
+  display: flex;
+  justify-content: space-evenly;
+  gap: 0.5rem;
+  font-family: "avenir-next", sans-serif;
+  align-items: center;
+}
+
+.social-container {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.programmer-img {
+  width: 20rem;
+  height: 20rem;
+
+  @include mobile {
+    width: 18rem;
+    height: 18rem;
+  }
+}
+
+.about-me-info-conatiner {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-title {
+  color: #ffffff;
+  font-family: monospace;
+  align-self: center;
+  font-size: 2rem;
+  border-bottom: 4px solid #00adff;
+  margin-bottom: 2rem;
+  font-weight: bold;
+}
+
+.info-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+  @include desktop {
+    gap: 3rem;
+  }
+
+  @include tablet {
+    flex-direction: column;
+  }
+}
+
+.what-i-know-title {
+  color: #ffffff;
+  font-size: 1rem;
+  font-family: "avenir-next", sans-serif;
+}
+
+.my-info-text {
+  color: #ffffff;
+  font-size: 1.3rem;
+  font-family: "avenir-next", sans-serif;
+  width: 71rem;
+
+  @include desktop-medium {
+    width: 53rem;
+  }
+
+  @include desktop {
+    width: 33rem;
+    text-align: center;
+  }
+
+  @include mobile {
+    font-size: 1rem;
+  }
+
+  @include mobile-middle {
+    width: 25rem;
+  }
+
+  @include mobile-small {
+    width: 18rem;
+  }
+}
+
+.what-i-know-logo-container {
+  display: flex;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.what-i-know-img {
+  width: 2rem;
+  height: 2rem;
+}
+
+.all-i-know-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  align-items: center;
+}
+
+.my-info-text-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.things-i-know-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  @include mobile {
+    align-items: center;
+  }
+}
+
+.i-know-buttons {
+  background-color: #0095ff;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  border: none;
+  font-size: 0.8rem;
+  color: #ffffff;
+}
+
+.button-container {
+  width: 17rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  @include mobile {
+    justify-content: center;
+  }
+}
+
+.linked-in-logo {
+  width: 2rem;
+  cursor: grab;
+}
+
+.git-hub-logo {
+  width: 2.5rem;
+  cursor: grab;
+}

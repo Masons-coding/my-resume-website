@@ -1,0 +1,63 @@
+@use "./styles/partials/mixins.scss" as *;
+@use "./styles/partials/letters" as *;
+
+.header {
+  background-color: hsl(231.2 84% 4.9%);
+  height: 10rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  font-family: "avenir-next", sans-serif;
+  // position: fixed;
+  // top: 0;
+  // left: 0;
+  // width: 100%;
+  // backdrop-filter: sepia(90%);
+
+  @include mobile {
+    flex-direction: column;
+  }
+}
+
+.logo-container {
+  display: flex;
+}
+
+.logo-button {
+  background-color: hsl(231.2 84% 4.9%);
+  border: none;
+  cursor: grab;
+}
+
+.nav-links {
+  display: flex;
+  gap: 3rem;
+  color: #ffffff;
+  font-family: "avenir-next", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+.about {
+  background-color: hsl(231.2 84% 4.9%);
+  height: fit-content;
+}
+
+.projects {
+  background-color: hsl(231.2 84% 4.9%);
+  height: fit-content;
+}
+
+.link {
+  color: #ffffff;
+  font-family: "avenir-next", sans-serif;
+  cursor: grab;
+  text-decoration: none;
+  list-style: none;
+  font-size: 1.5rem;
+}

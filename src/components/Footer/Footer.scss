@@ -1,0 +1,29 @@
+@use "../../styles/partials/mixins.scss" as *;
+@use "../../styles/partials/letters" as *;
+
+.footer-container {
+  background-color: hsl(231.2, 84%, 4.9%);
+  height: fit-content;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer-message {
+  color: #ffffff;
+  font-family: monospace;
+  align-self: center;
+  font-size: 3rem;
+  width: 100%;
+  text-align: center;
+}
+
+.footer-text {
+  color: #00adff;
+  font-family: "avenir-next", sans-serif;
+  align-self: center;
+  font-size: 1rem;
+  width: 100%;
+  text-align: center;
+}

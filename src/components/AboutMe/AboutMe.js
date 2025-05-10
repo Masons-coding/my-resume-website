@@ -26,7 +26,7 @@ function gitClick() {
         <div className="about-me">
             <div className="title-container">
                 <h1 className="welcome-message">HI! I'm Mason Clarke</h1>
-                <p className="my-title"> A Full Stack Web Developer | React | JavaScript | SCSS | NodeJS | ExpressJS | KnexJS | MySQL</p>
+                <p className="my-title"> A Full Stack Software Engineer | React | JavaScript | SCSS | NodeJS | ExpressJS | KnexJS | MySQL</p>
             <img  className="programmer-img" src={masonImg} alt="Programmer"/>
             <div className="my-contact-container">
                 <div className="social-container">

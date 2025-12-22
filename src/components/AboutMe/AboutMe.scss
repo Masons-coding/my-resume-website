@@ -2,7 +2,7 @@
 @use "../../styles/partials/letters" as *;
 
 .about-me {
-  background-color: hsl(137.77deg 84% 4.9%);
+  background-color: hsl(231.2 84% 4.9%);
   height: fit-content;
   display: flex;
   flex-direction: column;
@@ -82,7 +82,7 @@
 }
 
 .programmer-img {
-  width: 14rem;
+  width: 20rem;
   height: 20rem;
   border-radius: 10rem;
 
@@ -105,7 +105,7 @@
   font-family: monospace;
   align-self: center;
   font-size: 2rem;
-  border-bottom: 4px solid #00ffb6;
+  border-bottom: 4px solid #00adff;
   margin-bottom: 2rem;
   font-weight: bold;
 }
@@ -114,7 +114,6 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  height: 30rem;
 
   @include desktop {
     gap: 2rem;

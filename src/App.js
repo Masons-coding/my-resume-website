@@ -6,7 +6,7 @@ import MyProjects from "./components/MyProjects/MyProjects.js";
 
 import Footer from "./components/Footer/Footer.js";
 
-import couple from "./assets/images/Couple.png"
+import masonLogo from "./assets/images/Mason-logo.svg";
 
 import { useRef } from 'react';
 
@@ -31,12 +31,12 @@ function App() {
 
       <header className="header">
         <div className="logo-container">
-          <button className="logo-button" onClick={handleLogoClick}><img  className="logo" src={couple} alt="Couple"/></button>
+          <button className="logo-button" onClick={handleLogoClick}><img  className="logo" src={masonLogo} alt="MC logo"/></button>
         </div>
 
         <div className="nav-links">
-          <li onClick={() => scrollToSection(about)} className="link">Letter</li>
-          <li onClick={() => scrollToSection(projects)} className="link">Memories</li>
+          <li onClick={() => scrollToSection(about)} className="link">About</li>
+          <li onClick={() => scrollToSection(projects)} className="link">Projects</li>
         </div>
       </header>
 

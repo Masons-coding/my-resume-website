@@ -2,7 +2,7 @@
 @use "./styles/partials/letters" as *;
 
 .header {
-  background-color: hsl(137.77deg 84% 4.9%);
+  background-color: hsl(231.2 84% 4.9%);
   height: 10rem;
   display: flex;
   justify-content: space-evenly;
@@ -24,7 +24,7 @@
 }
 
 .logo-button {
-  background-color: hsl(137.77deg 84% 4.9%);
+  background-color: hsl(231.2 84% 4.9%);
   border: none;
   cursor: grab;
 }

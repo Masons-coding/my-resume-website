@@ -11,11 +11,7 @@ function gitClicked() {
     return (
         <>
         <div className="footer-container">
-            <h1 className="footer-message">Thank you!</h1>
-            <div className="footer-github-container">
-                <p className="footer-text">This was made using React, Javascript, HTML and SCSS</p>
-                <img onClick={gitClicked} className="github-logo" src={githubLogo} alt="Github Logo"/>
-            </div>
+            <h1 className="footer-message">I love you!</h1>
             
         </div>
         </>

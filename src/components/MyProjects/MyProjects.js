@@ -32,7 +32,7 @@ function weatherApiLinkClick() {
     return (
         <>
         <div className="projects-container">
-            <h1 className="projects-header">Projects (click logo to view live)</h1>
+            <h1 className="projects-header">Our Memories:</h1>
             <div className="all-projects-container">
                 <div className="project-container">
                     <h3 className="project-header-text">CLEAN EARTH</h3>

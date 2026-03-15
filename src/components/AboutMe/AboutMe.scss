@@ -41,7 +41,7 @@
   align-self: center;
   font-size: 1rem;
 
-  @include tablet-small {
+  @include tablet-med {
     text-align: center;
     width: 40ch;
   }

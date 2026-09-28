@@ -128,15 +128,36 @@ const CountdownDemo = () => {
   const parts = [Math.floor(left / 3600), Math.floor((left % 3600) / 60), left % 60];
 
   return (
-    <div className="countdown" aria-label="Countdown demo">
-      <p className="countdown__label">✈️ Upgrade offer ends in</p>
-      <div className="countdown__clock">
-        {parts.map((n, i) => (
-          <span key={i} className="countdown__unit">
-            <b>{String(n).padStart(2, "0")}</b>
-            <small>{["hrs", "min", "sec"][i]}</small>
-          </span>
-        ))}
+    <div className="promo-showcase" aria-label="Promotional landing page demo">
+      <div className="countdown">
+        <div className="countdown__copy">
+          <span className="countdown__eyebrow">Limited-time offer</span>
+          <p className="countdown__label">✈️ Upgrade offer ends in</p>
+        </div>
+        <div className="countdown__clock">
+          {parts.map((n, i) => (
+            <span key={i} className="countdown__unit">
+              <b>{String(n).padStart(2, "0")}</b>
+              <small>{["hrs", "min", "sec"][i]}</small>
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <div className="promo-showcase__grid">
+        <div className="promo-demo promo-demo--banner">
+          <span className="promo-demo__kicker">Bonus offer</span>
+          <strong>15,000 bonus points</strong>
+          <span>Activate before midnight</span>
+        </div>
+        <div className="promo-demo promo-demo--offer">
+          <div>
+            <span className="promo-demo__kicker">Partner upgrade</span>
+            <strong>Earn 10× points</strong>
+            <span>On your next eligible purchase</span>
+          </div>
+          <span className="promo-demo__pill">Activate</span>
+        </div>
       </div>
     </div>
   );

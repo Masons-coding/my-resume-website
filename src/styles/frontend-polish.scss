@@ -494,10 +494,11 @@ a {
 .cslab__head {
   gap: 1.5rem;
   margin-bottom: 1rem;
+  align-items: center;
 }
 
 .cslab__stats {
-  align-self: stretch;
+  align-self: center;
 }
 
 .lab-card {

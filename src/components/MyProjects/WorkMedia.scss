@@ -24,11 +24,17 @@
   }
 
   // Tall phone recording: show the whole device, centred
-  &--video video {
+  &--video video,
+  &--video .work-media__poster {
     height: 22rem;
     width: auto;
     max-width: 100%;
     object-fit: contain;
+  }
+
+  &__poster {
+    display: block;
+    margin: 0 auto;
   }
 
   // Let screenshots breathe inside the card instead of cropping them aggressively.
@@ -63,7 +69,8 @@
 
 
 @media (max-width: 600px) {
-  .work-media--video video {
+  .work-media--video video,
+  .work-media--video .work-media__poster {
     height: 20rem;
   }
 

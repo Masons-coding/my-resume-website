@@ -734,3 +734,58 @@ a {
     animation: none !important;
   }
 }
+
+/* Final consistency pass */
+.cslab__head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 1.5rem 2rem;
+}
+
+.cslab__stats {
+  justify-self: end;
+}
+
+.skills__chip:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(0, 173, 255, 0.12);
+}
+
+.about__code.is-visible:hover {
+  transform: translateY(-2px);
+}
+
+.timeline__card:hover {
+  transform: translateX(4px);
+}
+
+.education__card.is-visible:hover,
+.award.is-visible:hover {
+  transform: translateY(-3px);
+}
+
+.contact__actions .btn,
+.hero__cta .btn {
+  min-width: 8.5rem;
+}
+
+@media (max-width: 760px) {
+  .cslab__head {
+    grid-template-columns: 1fr;
+    align-items: stretch;
+  }
+
+  .cslab__stats {
+    justify-self: stretch;
+  }
+
+  .cslab__filters {
+    margin-top: 1.15rem;
+  }
+
+  .contact__actions .btn,
+  .hero__cta .btn {
+    min-width: 0;
+  }
+}

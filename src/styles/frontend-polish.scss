@@ -936,3 +936,76 @@ a {
     display: none;
   }
 }
+
+
+/* Final precision pass */
+.work-media,
+.project__logo,
+.navbar__logo,
+.navbar__palette,
+.navbar__burger,
+.skills__tab,
+.cslab__chip,
+.skills__chip {
+  font: inherit;
+}
+
+.work-media {
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.work-media:focus-visible,
+.project__logo:focus-visible,
+.navbar__logo:focus-visible,
+.navbar__palette:focus-visible,
+.navbar__burger:focus-visible,
+.skills__tab:focus-visible,
+.cslab__chip:focus-visible {
+  outline: 2px solid $cyan;
+  outline-offset: 3px;
+}
+
+.work-media__poster {
+  width: auto !important;
+  max-width: 100% !important;
+  object-position: center;
+}
+
+.about__soft li,
+.skills__chip,
+.cslab__stat,
+.lab-card,
+.education__card,
+.work {
+  transition-duration: 0.2s;
+}
+
+.timeline__card:hover {
+  transform: translateX(3px);
+}
+
+.lab-card:hover {
+  transform: translateY(-3px);
+}
+
+.work.is-visible:hover {
+  transform: translateY(-3px);
+}
+
+@media (hover: none) {
+  .project:hover,
+  .work.is-visible:hover,
+  .lab-card:hover,
+  .education__card.is-visible:hover,
+  .award.is-visible:hover,
+  .timeline__card:hover {
+    transform: none;
+    box-shadow: 0 16px 42px rgba(0, 0, 0, 0.12);
+  }
+
+  .skills__chip:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}

@@ -789,3 +789,150 @@ a {
     min-width: 0;
   }
 }
+
+
+/* Visual hierarchy pass: reduce “bubble” UI and make metrics feel intentional. */
+.hero__stats {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  border: 1px solid rgba(0, 173, 255, 0.16);
+  border-radius: 1rem;
+  overflow: hidden;
+  background: rgba(2, 9, 24, 0.68);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+.hero__stat {
+  position: relative;
+  min-height: 6.75rem;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.hero__stat:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 25%;
+  right: 0;
+  bottom: 25%;
+  width: 1px;
+  background: rgba(0, 173, 255, 0.13);
+}
+
+.hero__stat:hover {
+  transform: none;
+  background: rgba(0, 173, 255, 0.045);
+  border-color: transparent;
+}
+
+.hero__stat-value {
+  font-size: clamp(1.55rem, 3.4vw, 2.15rem);
+  letter-spacing: -0.035em;
+}
+
+.hero__stat-label {
+  max-width: 12rem;
+  margin-inline: auto;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+.project,
+.work,
+.lab-card,
+.education__card,
+.award,
+.terminal,
+.about__code {
+  box-shadow: 0 16px 42px rgba(0, 0, 0, 0.12);
+}
+
+.project,
+.work,
+.lab-card,
+.education__card {
+  will-change: transform;
+}
+
+.work {
+  border-color: rgba(0, 173, 255, 0.18);
+}
+
+.work-media {
+  border-color: rgba(0, 173, 255, 0.2);
+}
+
+.work-media--image img {
+  width: 100%;
+  max-width: none;
+  height: 18rem;
+  object-fit: contain;
+}
+
+.work-media--video video,
+.work-media--video .work-media__poster {
+  height: 24rem;
+}
+
+.cslab__filters,
+.skills__tabs {
+  scrollbar-width: none;
+}
+
+.cslab__filters::-webkit-scrollbar,
+.skills__tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.cslab__chip,
+.skills__tab {
+  white-space: nowrap;
+}
+
+.modal,
+.media-viewer,
+.palette__box {
+  border-color: rgba(0, 173, 255, 0.22);
+}
+
+@media (max-width: 920px) {
+  .hero__stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hero__stat:nth-child(2)::after {
+    display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .work-media--image img {
+    height: 16rem;
+  }
+
+  .work-media--video video,
+  .work-media--video .work-media__poster {
+    height: 22rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero__stats {
+    border-radius: 0.85rem;
+  }
+
+  .hero__stat {
+    min-height: 6rem;
+  }
+
+  .hero__stat:nth-child(odd)::after {
+    display: block;
+  }
+
+  .hero__stat:nth-child(even)::after {
+    display: none;
+  }
+}

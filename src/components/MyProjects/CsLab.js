@@ -26,16 +26,19 @@ const CsLab = ({ onDetails }) => {
             unit tests and CI.
           </p>
         </div>
-        <div className="cslab__stats">
-          <span>
-            <b>{csProjects.length}</b> live projects
-          </span>
-          <span>
-            <b>{totalTests}</b> unit tests
-          </span>
-          <span>
-            <b>0</b> servers
-          </span>
+        <div className="cslab__stats" aria-label="Computer Science Lab metrics">
+          <div className="cslab__stat">
+            <b>{csProjects.length}</b>
+            <span>live projects</span>
+          </div>
+          <div className="cslab__stat">
+            <b>{totalTests}</b>
+            <span>unit tests</span>
+          </div>
+          <div className="cslab__stat">
+            <b>0</b>
+            <span>servers</span>
+          </div>
         </div>
       </div>
 

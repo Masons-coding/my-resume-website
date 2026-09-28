@@ -1,5 +1,4 @@
 import "./App.scss";
-import "./styles/frontend-polish.scss";
 
 import { useEffect } from "react";
 
@@ -15,6 +14,7 @@ import Contact from "./components/Contact/Contact.js";
 import Footer from "./components/Footer/Footer.js";
 import CommandPalette from "./components/CommandPalette/CommandPalette.js";
 import Effects from "./components/Effects/Effects.js";
+import "./styles/frontend-polish.scss";
 
 import { confetti, toast } from "./utils/actions";
 

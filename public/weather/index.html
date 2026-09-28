@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Locked down: only this site, the Pyodide CDN and the keyless Open-Meteo API are allowed -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval' https://cdn.jsdelivr.net; connect-src 'self' https://cdn.jsdelivr.net https://geocoding-api.open-meteo.com https://api.open-meteo.com; img-src 'self' data:; style-src 'self'; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'"
+    />
+    <meta name="description" content="Mason Clarke's Python weather app, running in your browser with Pyodide (WebAssembly)." />
+    <meta name="theme-color" content="#87ceeb" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="weather.css" />
+    <title>Weather App · Mason Clarke</title>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="topbar__back" href="/">← Mason's portfolio</a>
+      <a class="topbar__gh" href="https://github.com/Masons-coding/WeatherAPI-APP" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+    </header>
+
+    <main class="app">
+      <section class="card">
+        <p class="badge"><span class="badge__dot" id="status-dot"></span> <span id="status">Booting Python…</span></p>
+        <h1 class="title">Type a city and click</h1>
+
+        <form class="search" id="search-form" autocomplete="off">
+          <label class="sr-only" for="city">City</label>
+          <input id="city" name="city" maxlength="100" placeholder="e.g. Ottawa or London, CA" disabled />
+          <button id="search-btn" type="submit" disabled>Click for weather</button>
+        </form>
+        <div class="recent" id="recent" aria-label="Recent searches"></div>
+
+        <div class="result" id="result" hidden>
+          <p class="result__location" id="location"></p>
+          <div class="result__main">
+            <img class="result__icon" id="icon" src="icons/iconPlaceHolder.png" alt="" width="100" height="100" />
+            <div>
+              <p class="result__temp" id="temp"></p>
+              <p class="result__desc" id="desc"></p>
+            </div>
+          </div>
+          <div class="result__grid">
+            <div class="stat">
+              <span class="stat__label">Wind Speeds:</span>
+              <span class="stat__value" id="wind"></span>
+            </div>
+            <div class="stat">
+              <span class="stat__label">Humidity:</span>
+              <span class="stat__value" id="humidity"></span>
+            </div>
+            <div class="stat stat--timer">
+              <span class="stat__label">Weather will update in:</span>
+              <span class="timer"><b id="t-h">00</b><b id="t-m">30</b><b id="t-s">00</b></span>
+            </div>
+          </div>
+        </div>
+        <p class="error" id="error" role="alert" hidden></p>
+      </section>
+
+      <section class="console" aria-label="Python console">
+        <div class="console__bar"><span></span><span></span><span></span><p>python — pyodide</p></div>
+        <pre class="console__body" id="console" aria-live="polite"></pre>
+      </section>
+
+      <details class="source">
+        <summary>🐍 View the Python source running on this page</summary>
+        <pre><code id="source">Loading…</code></pre>
+      </details>
+
+      <p class="footnote">
+        Originally a Python/Tkinter desktop app. The same Python now runs client-side on
+        <a href="https://pyodide.org" target="_blank" rel="noopener noreferrer">Pyodide</a> (WebAssembly) — no server, no API keys.
+        Weather data by <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo.com</a>.
+      </p>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.29.5/full/pyodide.js"></script>
+    <script src="weather.js"></script>
+  </body>
+</html>

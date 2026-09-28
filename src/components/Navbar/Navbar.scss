@@ -1,0 +1,147 @@
+@use "../../styles/partials/mixins.scss" as *;
+@use "../../styles/partials/variables" as *;
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  transition: background-color 0.3s, box-shadow 0.3s, backdrop-filter 0.3s;
+
+  &--scrolled {
+    background-color: rgba(2, 6, 23, 0.8);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 1px 0 $border;
+  }
+
+  &__inner {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0.75rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  &__logo {
+    background: none;
+    border: none;
+    display: flex;
+    transition: transform 0.3s;
+
+    img {
+      height: 2.75rem;
+    }
+
+    &:hover {
+      transform: rotate(-8deg) scale(1.08);
+    }
+  }
+
+  &__links {
+    display: flex;
+    gap: 0.25rem;
+
+    @include tablet {
+      position: fixed;
+      inset: 4.25rem 0 auto 0;
+      flex-direction: column;
+      background: $navy;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+      padding: 1rem 1.5rem 1.5rem;
+      border-bottom: 1px solid $border;
+      transform: translateY(-120%);
+      transition: transform 0.35s ease;
+
+      &--open {
+        transform: none;
+      }
+    }
+  }
+
+  &__link {
+    position: relative;
+    background: none;
+    border: none;
+    color: $muted;
+    font-size: 0.95rem;
+    padding: 0.5rem 0.75rem;
+    transition: color 0.2s;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0.75rem;
+      right: 0.75rem;
+      bottom: 0.2rem;
+      height: 2px;
+      background: $cyan;
+      transform: scaleX(0);
+      transition: transform 0.25s;
+    }
+
+    &:hover,
+    &--active {
+      color: $white;
+
+      &::after {
+        transform: scaleX(1);
+      }
+    }
+
+    @include tablet {
+      text-align: left;
+      font-size: 1.2rem;
+
+      &::after {
+        right: auto;
+        width: 2rem;
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  &__palette {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(21, 114, 182, 0.2);
+    border: 1px solid $border;
+    color: $muted;
+    padding: 0.4rem 0.75rem;
+    border-radius: 0.6rem;
+    transition: border-color 0.2s, color 0.2s;
+
+    &:hover {
+      border-color: $cyan;
+      color: $white;
+    }
+  }
+
+  &__kbd {
+    font-family: $font-mono;
+    font-size: 0.8rem;
+
+    @media (pointer: coarse) {
+      display: none;
+    }
+  }
+
+  &__burger {
+    display: none;
+    background: none;
+    border: none;
+    color: $white;
+
+    @include tablet {
+      display: flex;
+    }
+  }
+}

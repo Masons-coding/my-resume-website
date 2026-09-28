@@ -1,223 +1,136 @@
 @use "../../styles/partials/mixins.scss" as *;
-@use "../../styles/partials/letters" as *;
+@use "../../styles/partials/variables" as *;
 
-.about-me {
-  background-color: hsl(231.2 84% 4.9%);
-  height: fit-content;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 1rem;
-  padding: 4rem 1rem 0rem 1rem;
+.about {
+  &__grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 3rem;
+    align-items: start;
 
-  @include mobile {
-    padding: 4rem 1rem 1rem 1rem;
+    @include tablet {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__lead {
+    font-size: 1.3rem;
+    margin-bottom: 1.25rem;
+    border-left: 4px solid $orange;
+    padding-left: 1rem;
+
+    @include mobile {
+      font-size: 1.1rem;
+    }
+  }
+
+  &__para {
+    color: $muted;
+    font-size: 1.05rem;
+    margin-bottom: 1rem;
+  }
+
+  &__soft {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+
+    @include mobile {
+      grid-template-columns: 1fr;
+    }
+
+    li {
+      position: relative;
+      padding: 0.75rem 0.75rem 0.75rem 2.25rem;
+      border: 1px solid $border;
+      border-radius: 0.75rem;
+      font-size: 0.9rem;
+      background: rgba(21, 114, 182, 0.08);
+
+      &::before {
+        content: "✓";
+        position: absolute;
+        left: 0.8rem;
+        color: $cyan;
+        font-weight: bold;
+      }
+    }
+  }
+
+  &__code {
+    position: sticky;
+    top: 6rem;
+    background: #0a0f24;
+    border: 1px solid $border;
+    border-radius: $radius;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(0, 173, 255, 0.05);
+    transition: opacity 0.7s ease, transform 0.4s ease;
+
+    &.is-visible:hover {
+      transform: rotate(-1deg) scale(1.02);
+    }
+
+    pre {
+      padding: 1.25rem;
+      overflow-x: auto;
+      font-family: $font-mono;
+      font-size: 0.9rem;
+      line-height: 1.7;
+
+      @include mobile {
+        font-size: 0.75rem;
+      }
+    }
+  }
+
+  &__code-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.7rem 1rem;
+    background: rgba(255, 255, 255, 0.04);
+    border-bottom: 1px solid $border;
+
+    span {
+      width: 0.75rem;
+      height: 0.75rem;
+      border-radius: 50%;
+      background: #ff5f57;
+
+      &:nth-child(2) {
+        background: #febc2e;
+      }
+
+      &:nth-child(3) {
+        background: #28c840;
+      }
+    }
+
+    p {
+      margin-left: 0.75rem;
+      font-family: $font-mono;
+      font-size: 0.8rem;
+      color: $muted;
+    }
   }
 }
 
-.title-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
+.c-key {
+  color: $cyan;
 }
 
-.welcome-message {
-  color: #ffffff;
-  font-family: monospace;
-  align-self: center;
-  font-size: 3rem;
-
-  @include mobile {
-    font-size: 1.5rem;
-    width: 20ch;
-  }
+.c-str {
+  color: #ffb38a;
 }
 
-.my-title {
-  color: #ffffff;
-  font-family: "avenir-next", sans-serif;
-  align-self: center;
-  font-size: 1rem;
-
-  @include tablet-med {
-    text-align: center;
-    width: 40ch;
-  }
-
-  @include mobile {
-    font-size: 1rem;
-    width: 31ch;
-  }
-}
-
-.my-contact-container {
-  color: #ffffff;
-  font-size: 1rem;
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-  font-family: "avenir-next", sans-serif;
-
-  @include mobile-medium {
-    flex-direction: column;
-  }
-}
-
-.social-text {
-  color: #e34f26;
-  font-size: 1rem;
-  display: flex;
-  justify-content: space-evenly;
-  gap: 0.5rem;
-  font-family: "avenir-next", sans-serif;
-  align-items: center;
-}
-
-.social-container {
-  display: flex;
-  align-items: center;
-  gap: 0.2rem;
-}
-
-.programmer-img {
-  width: 20rem;
-  height: 20rem;
-  border-radius: 10rem;
-
-  @include mobile {
-    width: 18rem;
-    height: 18rem;
-  }
-}
-
-.about-me-info-conatiner {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  justify-content: center;
-  align-items: center;
-}
-
-.about-title {
-  color: #ffffff;
-  font-family: monospace;
-  align-self: center;
-  font-size: 2rem;
-  border-bottom: 4px solid #00adff;
-  margin-bottom: 2rem;
+.c-bool {
+  color: $orange;
   font-weight: bold;
 }
 
-.info-container {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-
-  @include desktop {
-    gap: 2rem;
-  }
-
-  @include tablet {
-    flex-direction: column;
-  }
-}
-
-.what-i-know-title {
-  color: #ffffff;
-  font-size: 1rem;
-  font-family: "avenir-next", sans-serif;
-}
-
-.my-info-text {
-  color: #ffffff;
-  font-size: 1.3rem;
-  font-family: "avenir-next", sans-serif;
-  width: 71rem;
-
-  @include desktop-medium {
-    width: 53rem;
-  }
-
-  @include desktop {
-    width: 33rem;
-    text-align: center;
-  }
-
-  @include mobile {
-    font-size: 1rem;
-  }
-
-  @include mobile-middle {
-    width: 25rem;
-  }
-
-  @include mobile-small {
-    width: 18rem;
-  }
-}
-
-.what-i-know-logo-container {
-  display: flex;
-  align-items: flex-end;
-  gap: 1rem;
-}
-
-.what-i-know-img {
-  width: 2rem;
-  height: 2rem;
-}
-
-.all-i-know-container {
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
-  align-items: center;
-}
-
-.my-info-text-container {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.things-i-know-list-container {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-
-  @include mobile {
-    align-items: center;
-  }
-}
-
-.i-know-buttons {
-  background-color: #0095ff;
-  border-radius: 1rem;
-  padding: 0.5rem;
-  border: none;
-  font-size: 0.8rem;
-  color: #ffffff;
-}
-
-.button-container {
-  width: 17rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-
-  @include mobile {
-    justify-content: center;
-  }
-}
-
-.linked-in-logo {
-  width: 2rem;
-  cursor: grab;
-}
-
-.git-hub-logo {
-  width: 2.5rem;
-  cursor: grab;
+.c-punct {
+  color: $muted;
 }

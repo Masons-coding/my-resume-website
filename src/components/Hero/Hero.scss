@@ -1,0 +1,330 @@
+@use "../../styles/partials/mixins.scss" as *;
+@use "../../styles/partials/variables" as *;
+
+.hero {
+  position: relative;
+  min-height: min(100vh, 56rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 7rem 1.5rem 4rem;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 70% 20%, rgba(21, 114, 182, 0.25), transparent 55%),
+    radial-gradient(ellipse at 10% 90%, rgba(227, 79, 38, 0.12), transparent 50%), $navy;
+
+  @include mobile {
+    padding: 6rem 1rem 4rem;
+  }
+
+  &__canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__inner {
+    position: relative;
+    max-width: $max-width;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    align-items: center;
+    gap: 3rem;
+    pointer-events: none;
+
+    > * {
+      pointer-events: auto;
+    }
+
+    @include tablet {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+  }
+
+  &__hello {
+    font-family: $font-mono;
+    color: $cyan;
+    font-size: 1.2rem;
+  }
+
+  &__wave {
+    display: inline-block;
+    animation: wave 2.4s ease-in-out infinite;
+    transform-origin: 70% 70%;
+  }
+
+  &__name {
+    font-family: $font-mono;
+    font-size: clamp(2.6rem, 7vw, 5rem);
+    line-height: 1.05;
+    margin: 0.25rem 0 0.75rem;
+  }
+
+  &__role {
+    font-family: $font-mono;
+    font-size: clamp(1.05rem, 2.4vw, 1.5rem);
+    min-height: 2.2em;
+  }
+
+  &__prompt {
+    color: $orange;
+  }
+
+  &__summary {
+    color: $muted;
+    font-size: 1.15rem;
+    max-width: 38rem;
+    margin: 1rem 0 2rem;
+
+    strong {
+      color: $white;
+    }
+
+    @include tablet {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  &__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+
+    @include tablet {
+      justify-content: center;
+    }
+  }
+
+  &__socials {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+
+    @include tablet {
+      justify-content: center;
+    }
+
+    button {
+      background: none;
+      border: 1px solid $border;
+      color: $white;
+      width: 2.75rem;
+      height: 2.75rem;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      transition: transform 0.2s, border-color 0.2s, color 0.2s;
+
+      &:hover {
+        transform: translateY(-3px);
+        border-color: $cyan;
+        color: $cyan;
+      }
+    }
+  }
+
+  &__meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: $muted;
+    font-size: 0.9rem;
+  }
+
+  &__photo-wrap {
+    position: relative;
+    width: min(22rem, 75vw);
+    aspect-ratio: 1;
+    justify-self: center;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    box-shadow: 0 0 40px rgba(0, 173, 255, 0.35);
+  }
+
+  &__ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, $cyan, $blue, $orange, $cyan);
+    animation: spin 8s linear infinite;
+    will-change: transform;
+  }
+
+  &__photo {
+    position: relative;
+    width: calc(100% - 12px);
+    height: calc(100% - 12px);
+    object-fit: cover;
+    border-radius: 50%;
+    border: 6px solid $navy;
+  }
+
+  &__badge {
+    position: absolute;
+    bottom: 6%;
+    right: -4%;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: $navy-card;
+    border: 1px solid $border;
+    padding: 0.5rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    animation: float 4s ease-in-out infinite;
+
+    @include mobile {
+      right: 50%;
+      transform: translateX(50%);
+      bottom: -4%;
+      animation: none;
+      white-space: nowrap;
+    }
+  }
+
+  &__pulse {
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 50%;
+    background: #22c55e;
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+    animation: pulse 1.8s infinite;
+  }
+
+  &__stats {
+    position: relative;
+    max-width: $max-width;
+    width: 100%;
+    margin: 4rem auto 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+
+    @include tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &__stat {
+    background: rgba(2, 6, 23, 0.8);
+    border: 1px solid $border;
+    border-radius: $radius;
+    padding: 1.25rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s, border-color 0.25s;
+
+    &:hover {
+      transform: translateY(-4px);
+      border-color: $cyan;
+    }
+  }
+
+  &__stat-value {
+    font-family: $font-mono;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-weight: bold;
+    color: $cyan;
+  }
+
+  &__stat-label {
+    color: $muted;
+    font-size: 0.85rem;
+  }
+
+  &__scroll {
+    position: relative;
+    margin: 3rem auto 0;
+    width: 1.6rem;
+    height: 2.6rem;
+    border: 2px solid $muted;
+    border-radius: 1rem;
+    background: none;
+
+    span {
+      position: absolute;
+      top: 0.4rem;
+      left: 50%;
+      width: 4px;
+      height: 0.5rem;
+      margin-left: -2px;
+      border-radius: 2px;
+      background: $cyan;
+      animation: scroll-dot 1.8s infinite;
+    }
+  }
+}
+
+.typewriter {
+  color: $white;
+
+  &__caret {
+    display: inline-block;
+    width: 0.6ch;
+    height: 1.1em;
+    margin-left: 2px;
+    vertical-align: text-bottom;
+    background: $cyan;
+    animation: blink 1s steps(1) infinite;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes float {
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes pulse {
+  70% {
+    box-shadow: 0 0 0 10px rgba(34, 197, 94, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+  }
+}
+
+@keyframes wave {
+  0%, 60%, 100% {
+    transform: rotate(0);
+  }
+  10%, 30% {
+    transform: rotate(14deg);
+  }
+  20%, 40% {
+    transform: rotate(-8deg);
+  }
+}
+
+@keyframes scroll-dot {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+}

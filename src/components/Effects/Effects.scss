@@ -1,0 +1,85 @@
+@use "../../styles/partials/variables" as *;
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 200;
+  transform-origin: left;
+  background: linear-gradient(90deg, $cyan, $orange);
+}
+
+.cursor-glow {
+  position: fixed;
+  top: -200px;
+  left: -200px;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(circle, rgba(0, 173, 255, 0.09), transparent 65%);
+  transition: transform 0.15s ease-out;
+}
+
+.back-to-top {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 150;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: 2px solid $cyan;
+  background: $navy;
+  color: $cyan;
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  transition: opacity 0.3s, transform 0.3s, background-color 0.2s, color 0.2s;
+
+  &--show {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+
+  &:hover {
+    background: $cyan;
+    color: $navy;
+  }
+}
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 1.5rem;
+  z-index: 300;
+  transform: translate(-50%, calc(100% + 3rem));
+  visibility: hidden;
+  background: $white;
+  color: $navy;
+  font-weight: bold;
+  padding: 0.75rem 1.25rem;
+  border-radius: 999px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  transition: transform 0.35s cubic-bezier(0.2, 1.4, 0.4, 1), visibility 0.35s;
+  max-width: calc(100vw - 2rem);
+  text-align: center;
+
+  &--show {
+    transform: translate(-50%, 0);
+    visibility: visible;
+  }
+}
+
+.confetti {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 400;
+}

@@ -1,70 +1,227 @@
-import './MyProjects.scss';
+import "./MyProjects.scss";
+
+import { useEffect, useRef, useState } from "react";
+
 import cleanEarthLogo from "../../assets/images/Clean-Earth-Logo.svg";
-
 import weatherLogo from "../../assets/images/weather-icon.svg";
+import masonLogo from "../../assets/images/Mason-logo.svg";
+import Icon from "../Icon/Icon.js";
+import { otherWork, projects } from "../../data/resume";
+import { openLink, prefersReducedMotion } from "../../utils/actions";
 
-import githubLogo from "../../assets/images/github-icon.svg";
+const logos = { "clean-earth": cleanEarthLogo, weather: weatherLogo, mc: masonLogo };
+
+
+// Card that tilts toward the cursor and shows a moving spotlight
+const TiltCard = ({ children, accent }) => {
+  const ref = useRef(null);
+
+  const onMove = (e) => {
+    if (prefersReducedMotion()) return;
+    const el = ref.current;
+    const rect = el.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width;
+    const y = (e.clientY - rect.top) / rect.height;
+    el.style.setProperty("--rx", `${(0.5 - y) * 10}deg`);
+    el.style.setProperty("--ry", `${(x - 0.5) * 10}deg`);
+    el.style.setProperty("--mx", `${x * 100}%`);
+    el.style.setProperty("--my", `${y * 100}%`);
+  };
+
+  const onLeave = () => {
+    ref.current.style.setProperty("--rx", "0deg");
+    ref.current.style.setProperty("--ry", "0deg");
+  };
+
+  return (
+    <article ref={ref} className="project" style={{ "--accent": accent }} onPointerMove={onMove} onPointerLeave={onLeave}>
+      {children}
+    </article>
+  );
+};
+
+const ProjectModal = ({ project, onClose }) => {
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const dialog = ref.current;
+    if (project && !dialog.open) dialog.showModal();
+    if (!project && dialog.open) dialog.close();
+  }, [project]);
+
+  return (
+    <dialog
+      ref={ref}
+      className="modal"
+      onClose={onClose}
+      onClick={(e) => e.target === ref.current && onClose()}
+      aria-labelledby="modal-title"
+    >
+      {project && (
+        <div className="modal__body" style={{ "--accent": project.accent }}>
+          <button className="modal__close" onClick={onClose} aria-label="Close">
+            <Icon name="close" />
+          </button>
+          <img className="modal__logo" src={logos[project.logo]} alt="" />
+          <h3 id="modal-title" className="modal__title">
+            {project.name}
+          </h3>
+          <p className="modal__tagline">{project.tagline}</p>
+          <p className="modal__desc">{project.description}</p>
+          <h4 className="modal__subtitle">Highlights</h4>
+          <ul className="modal__list">
+            {project.highlights.map((h) => (
+              <li key={h}>{h}</li>
+            ))}
+          </ul>
+          <h4 className="modal__subtitle">Tech stack</h4>
+          <div className="tag-list">
+            {project.stack.map((t) => (
+              <span key={t} className="tag">
+                {t}
+              </span>
+            ))}
+          </div>
+          <div className="modal__actions">
+            {project.live && (
+              <button className="btn btn--primary" onClick={() => openLink(project.live)}>
+                {project.liveLabel} <Icon name="external" size={16} />
+              </button>
+            )}
+            {project.repos.map((r) => (
+              <button key={r.url} className="btn" onClick={() => openLink(r.url)}>
+                <Icon name="github" size={16} /> {r.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+    </dialog>
+  );
+};
+
+// Recreation of the promo countdown clocks I build at work (demo only — no partner code).
+const CountdownDemo = () => {
+  const [left, setLeft] = useState(null);
+
+  useEffect(() => {
+    const tick = () => {
+      const now = new Date();
+      const end = new Date(now);
+      end.setHours(24, 0, 0, 0);
+      setLeft(Math.floor((end - now) / 1000));
+    };
+    tick();
+    const timer = setInterval(tick, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  if (left === null) return null;
+  const parts = [Math.floor(left / 3600), Math.floor((left % 3600) / 60), left % 60];
+
+  return (
+    <div className="countdown" aria-label="Countdown demo">
+      <p className="countdown__label">✈️ Upgrade offer ends in</p>
+      <div className="countdown__clock">
+        {parts.map((n, i) => (
+          <span key={i} className="countdown__unit">
+            <b>{String(n).padStart(2, "0")}</b>
+            <small>{["hrs", "min", "sec"][i]}</small>
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+};
 
 const MyProjects = () => {
+  const [selected, setSelected] = useState(null);
 
-function cleanEarthClick() {
-    window.open('https://www.cleanearthfoundation.com/');
-}
+  return (
+    <section id="projects" className="section projects">
+      <div className="section__inner">
+        <p className="section__eyebrow reveal">things I've built</p>
+        <h2 className="section__title reveal">Projects</h2>
 
-function cleanEarthGitFrontClick() {
-    window.open('https://github.com/Masons-coding/Clean-Earth-Foundation');
-}
-
-function cleanEarthGitBackClick() {
-    window.open('https://github.com/Masons-coding/cleanearthfoundation-server');
-}
-
-function weatherGitClick() {
-    window.open('https://github.com/Masons-coding/WeatherAPI-APP');
-}
-
-function weatherApiLinkClick() {
-    window.open('https://openweathermap.org/');
-}
-
-
-
-    return (
-        <>
-        <div className="projects-container">
-            <h1 className="projects-header">Projects (click logo to view live)</h1>
-            <div className="all-projects-container">
-                <div className="project-container">
-                    <h3 className="project-header-text">CLEAN EARTH</h3>
-                    <img onClick={cleanEarthClick} className="project-logo" src={cleanEarthLogo} alt="CleanEarth Logo"/>
-                    <p className="project-text">Clean Earth Foundation is a nonprofit organization dedicated to championing and coordinating initiatives aimed at environmental cleanup and preservation on a global scale.</p>
-                    <div className="github-container">
-                        <p className="project-text-git">Front-end:</p>
-                        <img onClick={cleanEarthGitFrontClick} className="github-logo" src={githubLogo} alt="Github Logo"/>
-                    </div>
-                    <div className="github-container">
-                        <p className="project-text-git">Back-end:</p>
-                        <img onClick={cleanEarthGitBackClick} className="github-logo" src={githubLogo} alt="Github Logo"/>
-                    </div>
-                    <div className="used-container">
-                        <p className="used-text">Tech-stack:</p>
-                        <p className="used-stack-text">React, JavaScript, SCSS, NodeJS, ExpressJS, KnexJS, MySQL database, Google Maps API, Stripe payment API, and various NPM packages.</p>
-                    </div>
+        <div className="projects__grid">
+          {projects.map((p) => (
+            <div key={p.id} className="reveal">
+              <TiltCard accent={p.accent}>
+                <div className="project__top">
+                  <button
+                    className="project__logo"
+                    onClick={() => (p.live ? openLink(p.live) : setSelected(p))}
+                    aria-label={p.live ? `${p.liveLabel}: ${p.name}` : `Details: ${p.name}`}
+                  >
+                    <img src={logos[p.logo]} alt="" />
+                  </button>
+                  {p.id === "weather" && <span className="project__badge">🐍 Python in your browser</span>}
+                  {p.id === "clean-earth" && <span className="project__badge">● Live</span>}
                 </div>
-                <div className="project-container">
-                    <h3 className="project-header-text">Weather API</h3>
-                    <img  className="project-logo" src={weatherLogo} alt="Weather Logo"/>
-                    <p className="project-text">A Python-based weather application which leverages an online weather API, <span className="weather-link" onClick={weatherApiLinkClick}>Openweathermap</span>, to provide real-time weather information for cities worldwide. Users can input the name of a city, and the application sends a request to the API, retrieving data such as temperature, humidity, wind speed, and weather conditions</p>
-                    <img onClick={weatherGitClick} className="github-logo" src={githubLogo} alt="Github Logo"/>
-                    <div className="used-container">
-                        <p className="used-text">Tech-stack:</p>
-                        <p className="used-stack-text">Python, Python Tkinter, Python Configparser, Python requests, Python time, and Openweathermap-API</p>
-                    </div>
+                <h3 className="project__name">{p.name}</h3>
+                <p className="project__tagline">{p.tagline}</p>
+                <p className="project__desc">{p.description}</p>
+                <div className="tag-list">
+                  {p.stack.slice(0, 5).map((t) => (
+                    <span key={t} className="tag">
+                      {t}
+                    </span>
+                  ))}
+                  {p.stack.length > 5 && <span className="tag">+{p.stack.length - 5}</span>}
                 </div>
+                <div className="project__actions">
+                  {p.live && (
+                    <button className="btn btn--primary btn--small" onClick={() => openLink(p.live)}>
+                      {p.liveLabel} <Icon name="external" size={14} />
+                    </button>
+                  )}
+                  {p.repos.map((r) => (
+                    <button
+                      key={r.url}
+                      className="btn btn--small"
+                      onClick={() => openLink(r.url)}
+                      aria-label={`${p.name} ${r.label} on GitHub`}
+                    >
+                      <Icon name="github" size={14} /> {r.label}
+                    </button>
+                  ))}
+                  <button className="project__more" onClick={() => setSelected(p)}>
+                    <Icon name="info" size={16} /> Details
+                  </button>
+                </div>
+              </TiltCard>
             </div>
+          ))}
         </div>
-        </>
-    );
+
+        <h3 className="projects__subhead reveal">Professional & hackathon work</h3>
+        <p className="projects__note reveal">Proprietary or event projects — described here, code not public.</p>
+        <div className="projects__other">
+          {otherWork.map((w) => (
+            <article key={w.id} className="work card reveal">
+              <div className="work__head">
+                <span className="work__badge">{w.badge}</span>
+                <span className="work__impact">{w.impact}</span>
+              </div>
+              <h4 className="work__name">{w.name}</h4>
+              <p className="work__org">{w.org}</p>
+              <p className="work__desc">{w.description}</p>
+              {w.demo === "countdown" && <CountdownDemo />}
+              <div className="tag-list">
+                {w.stack.map((t) => (
+                  <span key={t} className="tag">
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <ProjectModal project={selected} onClose={() => setSelected(null)} />
+    </section>
+  );
 };
 
 export default MyProjects;

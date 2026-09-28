@@ -1,63 +1,213 @@
 @use "./styles/partials/mixins.scss" as *;
 @use "./styles/partials/letters" as *;
-
-.header {
-  background-color: hsl(231.2 84% 4.9%);
-  height: 10rem;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  font-family: "avenir-next", sans-serif;
-  // position: fixed;
-  // top: 0;
-  // left: 0;
-  // width: 100%;
-  // backdrop-filter: sepia(90%);
-
-  @include mobile {
-    flex-direction: column;
-  }
-}
-
-.logo-container {
-  display: flex;
-}
-
-.logo-button {
-  background-color: hsl(231.2 84% 4.9%);
-  border: none;
-  cursor: grab;
-}
-
-.nav-links {
-  display: flex;
-  gap: 3rem;
-  color: #ffffff;
-  font-family: "avenir-next", sans-serif;
-}
+@use "./styles/partials/variables" as *;
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+html {
   scroll-behavior: smooth;
+  background-color: $navy;
+
+  @media (prefers-reduced-motion: reduce) {
+    scroll-behavior: auto;
+  }
 }
 
-.about {
-  background-color: hsl(231.2 84% 4.9%);
-  height: fit-content;
+body {
+  background-color: $navy;
+  color: $white;
+  font-family: $font-body;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
-.projects {
-  background-color: hsl(231.2 84% 4.9%);
-  height: fit-content;
+::selection {
+  background: $cyan;
+  color: $navy;
 }
 
-.link {
-  color: #ffffff;
-  font-family: "avenir-next", sans-serif;
-  cursor: grab;
+a {
+  color: inherit;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid $cyan;
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0.5rem;
+  z-index: 1000;
+  background: $cyan;
+  color: $navy;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+
+  &:focus {
+    left: 0.5rem;
+  }
+}
+
+// ---- Shared section layout -------------------------------------------------
+
+.section {
+  position: relative;
+  padding: 5rem 1.5rem;
+  scroll-margin-top: 4rem;
+
+  @include mobile {
+    padding: 3.5rem 1rem;
+  }
+
+  &__inner {
+    max-width: $max-width;
+    margin: 0 auto;
+  }
+
+  &__eyebrow {
+    font-family: $font-mono;
+    color: $cyan;
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+
+    &::before {
+      content: "// ";
+      color: $orange;
+    }
+  }
+
+  &__title {
+    font-family: $font-mono;
+    font-size: clamp(2rem, 5vw, 3rem);
+    line-height: 1.15;
+    margin: 0.25rem 0 3rem;
+    display: inline-block;
+    border-bottom: 4px solid $cyan;
+    padding-bottom: 0.4rem;
+  }
+}
+
+// ---- Shared bits ---------------------------------------------------------------
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.4rem;
+  border-radius: 999px;
+  border: 2px solid $cyan;
+  font-weight: bold;
   text-decoration: none;
-  list-style: none;
-  font-size: 1.5rem;
+  transition: transform 0.2s, background-color 0.2s, color 0.2s, box-shadow 0.2s;
+  background: transparent;
+  color: $white;
+  font-size: 0.95rem;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 173, 255, 0.35);
+  }
+
+  &--primary {
+    background: $cyan;
+    color: $navy;
+
+    &:hover {
+      background: $white;
+      border-color: $white;
+    }
+  }
+
+  &--orange {
+    border-color: $orange;
+
+    &:hover {
+      background: $orange;
+      box-shadow: 0 8px 24px rgba(227, 79, 38, 0.35);
+    }
+  }
+
+  &--small {
+    padding: 0.45rem 0.9rem;
+    font-size: 0.85rem;
+  }
+}
+
+.tag {
+  display: inline-block;
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(21, 114, 182, 0.25);
+  border: 1px solid rgba(0, 173, 255, 0.35);
+  color: #cfeeff;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.card {
+  background: linear-gradient(160deg, rgba(21, 114, 182, 0.14), rgba(2, 6, 23, 0.6));
+  border: 1px solid $border;
+  border-radius: $radius;
+  padding: 1.5rem;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, $cyan, $white 50%, $orange);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shine 6s linear infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+// ---- Reveal on scroll --------------------------------------------------------
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+
+  &.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
 }

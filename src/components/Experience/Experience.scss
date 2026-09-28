@@ -1,0 +1,147 @@
+@use "../../styles/partials/mixins.scss" as *;
+@use "../../styles/partials/variables" as *;
+
+.experience {
+  background: linear-gradient(180deg, $navy, $navy-light 50%, $navy);
+}
+
+.timeline {
+  position: relative;
+  list-style: none;
+  padding-left: 3rem;
+
+  @include mobile {
+    padding-left: 2.25rem;
+  }
+
+  // Glowing vertical rail
+  &::before {
+    content: "";
+    position: absolute;
+    left: 1rem;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    width: 2px;
+    background: linear-gradient($cyan, $blue, $orange);
+
+    @include mobile {
+      left: 0.6rem;
+    }
+  }
+
+  &__item {
+    position: relative;
+    margin-bottom: 2rem;
+
+    &:nth-child(2) {
+      transition-delay: 0.1s;
+    }
+
+    &:nth-child(3) {
+      transition-delay: 0.2s;
+    }
+  }
+
+  &__dot {
+    position: absolute;
+    left: -3rem;
+    top: 1.25rem;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: $navy;
+    border: 2px solid $cyan;
+    color: $cyan;
+
+    @include mobile {
+      left: -2.25rem;
+      width: 1.5rem;
+      height: 1.5rem;
+
+      svg {
+        width: 12px;
+      }
+    }
+
+    &--current {
+      border-color: $orange;
+      color: $orange;
+      box-shadow: 0 0 0 0 rgba(227, 79, 38, 0.6);
+      animation: ring 2s infinite;
+    }
+  }
+
+  &__card {
+    transition: transform 0.25s, border-color 0.25s;
+
+    &:hover {
+      transform: translateX(6px);
+      border-color: $cyan;
+    }
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+
+  &__role {
+    font-family: $font-mono;
+    font-size: 1.35rem;
+  }
+
+  &__company {
+    color: $cyan;
+    font-weight: bold;
+  }
+
+  &__period {
+    font-family: $font-mono;
+    font-size: 0.8rem;
+    color: $muted;
+    border: 1px solid $border;
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+    white-space: nowrap;
+
+    &--current {
+      color: $white;
+      border-color: $orange;
+      background: rgba(227, 79, 38, 0.15);
+    }
+  }
+
+  &__points {
+    list-style: none;
+    margin-bottom: 1rem;
+
+    li {
+      position: relative;
+      padding-left: 1.4rem;
+      margin-bottom: 0.5rem;
+      color: #d5dcf0;
+
+      &::before {
+        content: "▹";
+        position: absolute;
+        left: 0;
+        color: $orange;
+      }
+    }
+  }
+}
+
+@keyframes ring {
+  70% {
+    box-shadow: 0 0 0 12px rgba(227, 79, 38, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(227, 79, 38, 0);
+  }
+}

@@ -77,12 +77,14 @@ export const education = [
     school: "BrainStation",
     program: "Web Development Bootcamp",
     period: "Sep 2022 — Dec 2022",
+    gpa: "3.9",
     detail: "React, Node.js, Express, Knex.js and MySQL — full-stack from design to deployment.",
   },
   {
     school: "Lambton College",
     program: "Computer Science",
     period: "Sep 2020 — Apr 2022",
+    gpa: "3.8",
     detail: "Programming languages, algorithms, data structures, software development methodologies and computer architecture.",
   },
 ];

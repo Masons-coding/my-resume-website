@@ -1,4 +1,5 @@
 import "./App.scss";
+import "./styles/frontend-polish.scss";
 
 import { useEffect } from "react";
 

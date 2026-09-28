@@ -6,6 +6,7 @@ import cleanEarthLogo from "../../assets/images/Clean-Earth-Logo.svg";
 import weatherLogo from "../../assets/images/weather-icon.svg";
 import masonLogo from "../../assets/images/Mason-logo.svg";
 import Icon from "../Icon/Icon.js";
+import CsLab from "./CsLab.js";
 import { otherWork, projects } from "../../data/resume";
 import { openLink, prefersReducedMotion } from "../../utils/actions";
 
@@ -62,7 +63,13 @@ const ProjectModal = ({ project, onClose }) => {
           <button className="modal__close" onClick={onClose} aria-label="Close">
             <Icon name="close" />
           </button>
-          <img className="modal__logo" src={logos[project.logo]} alt="" />
+          {project.icon ? (
+            <span className="modal__icon" aria-hidden="true">
+              {project.icon}
+            </span>
+          ) : (
+            <img className="modal__logo" src={logos[project.logo]} alt="" />
+          )}
           <h3 id="modal-title" className="modal__title">
             {project.name}
           </h3>
@@ -193,6 +200,8 @@ const MyProjects = () => {
             </div>
           ))}
         </div>
+
+        <CsLab onDetails={setSelected} />
 
         <h3 className="projects__subhead reveal">Professional & hackathon work</h3>
         <p className="projects__note reveal">Proprietary or event projects — described here, code not public.</p>

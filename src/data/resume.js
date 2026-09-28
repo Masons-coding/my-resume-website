@@ -98,7 +98,8 @@ export const skillGroups = {
   Frameworks: ["React", "Node.js", "Express.js", "Knex.js", "REST APIs", "NPM"],
   "Data & Cloud": ["MySQL", "MongoDB", "AWS (RDS, S3)", "Netlify", "Heroku", "Docker"],
   Tools: ["Git / GitHub", "GitLab", "Jira", "Salesforce", "Grafana", "Splunk", "Cypress", "Cyberduck"],
-  Practices: ["Agile / Scrum", "BEM", "Client solutions", "AI-assisted development", "End-to-end testing"],
+  "CS Fundamentals": ["Algorithms & data structures", "Operating systems", "Machine learning", "Cryptography", "Compilers & interpreters", "Networking (TCP/IP, DNS)", "WebAssembly"],
+  Practices: ["Agile / Scrum", "BEM", "Client solutions", "AI-assisted development", "Unit testing & CI", "End-to-end testing"],
 };
 
 export const softSkills = [
@@ -167,6 +168,154 @@ export const projects = [
     repos: [{ label: "Source", url: "https://github.com/Masons-coding/my-resume-website" }],
     logo: "mc",
     accent: "#1572b6",
+  },
+];
+
+// Computer-science fundamentals, one live project per core area.
+// Each is a standalone repo with unit tests + CI, hosted free on GitHub Pages.
+const pages = (repo) => `https://masons-coding.github.io/${repo}/`;
+const gh = (repo) => `https://github.com/Masons-coding/${repo}`;
+
+export const csProjects = [
+  {
+    id: "algorithm-visualizer",
+    area: "Algorithms",
+    icon: "📊",
+    name: "Algorithm Visualizer",
+    tagline: "Sorting + pathfinding, one operation at a time",
+    description:
+      "Watch Merge, Quick and Heap sort or A*, Dijkstra and BFS run step by step. Every frame is emitted by the real algorithm (written as JS generators), with live comparison counts and a race mode.",
+    highlights: [
+      "6 sorting algorithms with complexity cheat-sheet and a work-counting race",
+      "A*, Dijkstra, BFS, DFS, Greedy on a drawable grid with weighted cells",
+      "Hand-written binary-heap priority queue; maze generation via recursive backtracker",
+      "65 unit tests — correctness, stability, optimal path lengths",
+    ],
+    stack: ["JavaScript", "Generators", "Binary heap", "Graph search", "node:test"],
+    tests: 65,
+    live: pages("algorithm-visualizer"),
+    repo: gh("algorithm-visualizer"),
+    accent: "#00adff",
+  },
+  {
+    id: "sql-query-lab",
+    area: "Databases",
+    icon: "🗄️",
+    name: "SQL Query Lab",
+    tagline: "Real SQLite in the browser + 14 graded challenges",
+    description:
+      "SQLite compiled to WebAssembly running against an airline-loyalty database (flights, members, bookings, upgrade bids). Solve auto-graded challenges from SELECT to window functions and inspect query plans.",
+    highlights: [
+      "Seeded relational schema with PK/FK/CHECK constraints and indexes",
+      "Fair grader: runs on a fresh DB copy, multiset comparison, explains failures",
+      "EXPLAIN QUERY PLAN tree highlighting index SEARCH vs table SCAN",
+      "CI runs every challenge's reference solution against real SQLite",
+    ],
+    stack: ["SQL", "SQLite", "WebAssembly", "Window functions", "CTEs"],
+    tests: 24,
+    live: pages("sql-query-lab"),
+    repo: gh("sql-query-lab"),
+    accent: "#22c55e",
+  },
+  {
+    id: "os-scheduler-sim",
+    area: "Systems",
+    icon: "⚙️",
+    name: "OS Scheduler Simulator",
+    tagline: "CPU scheduling & virtual-memory paging",
+    description:
+      "FCFS, SJF, SRTF, Round Robin and Priority scheduling with animated Gantt charts and metrics, plus FIFO, LRU, Optimal and Clock page replacement — with Bélády's anomaly detected automatically.",
+    highlights: [
+      "Reproduces the Silberschatz textbook answers exactly (e.g. SRTF avg wait 6.5)",
+      "Property tests: every process gets its burst, SRTF is never beaten",
+      "Frame-by-frame paging table and faults-vs-frames SVG chart",
+      "Live comparison of every algorithm on your workload",
+    ],
+    stack: ["Operating systems", "Simulation", "SVG", "JavaScript"],
+    tests: 16,
+    live: pages("os-scheduler-sim"),
+    repo: gh("os-scheduler-sim"),
+    accent: "#febc2e",
+  },
+  {
+    id: "neural-net-from-scratch",
+    area: "AI / ML",
+    icon: "🧠",
+    name: "Neural Net From Scratch",
+    tagline: "Backprop + Adam, no ML libraries",
+    description:
+      "A multilayer perceptron with hand-written forward pass, backpropagation and SGD / Momentum / Adam optimizers, training live in the browser on spirals, moons and XOR with a decision-boundary heatmap.",
+    highlights: [
+      "Gradient checking proves backprop matches numerical derivatives (< 1e-4)",
+      "Tests show a linear model fails XOR while a hidden layer solves it",
+      "He/Xavier initialisation, L2 regularisation, train/test loss curves",
+      "Live network diagram colored by weight sign and magnitude",
+    ],
+    stack: ["Machine learning", "Backpropagation", "Adam", "Canvas", "Math"],
+    tests: 13,
+    live: pages("neural-net-from-scratch"),
+    repo: gh("neural-net-from-scratch"),
+    accent: "#a78bfa",
+  },
+  {
+    id: "security-lab",
+    area: "Security",
+    icon: "🔐",
+    name: "Security Lab",
+    tagline: "Hashing, AES-GCM, passwords, cipher cracking, JWTs",
+    description:
+      "Hands-on cryptography with the Web Crypto API: the avalanche effect, password-based AES-256-GCM, realistic password-strength modelling, Caesar/Vigenère cracking by frequency analysis, and a JWT auditor.",
+    highlights: [
+      "PBKDF2 (600k iterations) + AES-GCM with a 'tamper 1 bit' demo",
+      "Vigenère keys recovered from ciphertext alone via index of coincidence",
+      "JWT audit flags alg:none, expiry, secrets in payload; forged tokens fail",
+      "CSP blocks all network access — nothing leaves the device",
+    ],
+    stack: ["Web Crypto", "AES-GCM", "PBKDF2", "JWT", "Cryptanalysis"],
+    tests: 23,
+    live: pages("security-lab"),
+    repo: gh("security-lab"),
+    accent: "#e34f26",
+  },
+  {
+    id: "mini-lang-interpreter",
+    area: "Languages",
+    icon: "🍁",
+    name: "Maple Language",
+    tagline: "A programming language built from scratch",
+    description:
+      "Maple has closures, recursion, arrays and first-class functions, implemented with a hand-written lexer, a Pratt parser and a tree-walking interpreter. The playground shows tokens, the syntax tree and output.",
+    highlights: [
+      "Precedence climbing parser with helpful, positioned error messages",
+      "Lexical scoping via environment chains; closures capture defining scope",
+      "Step budget stops infinite loops; depth limit reports stack overflow",
+      "Collapsible AST viewer and token table for every program",
+    ],
+    stack: ["Compilers", "Parsing", "Interpreters", "AST", "JavaScript"],
+    tests: 21,
+    live: pages("mini-lang-interpreter"),
+    repo: gh("mini-lang-interpreter"),
+    accent: "#f472b6",
+  },
+  {
+    id: "network-toolkit",
+    area: "Networking",
+    icon: "🌐",
+    name: "Network Toolkit",
+    tagline: "Subnetting, VLSM, live DNS, TCP simulator",
+    description:
+      "An IPv4 subnet calculator and VLSM planner, real DNS lookups over encrypted DNS-over-HTTPS, and an animated TCP connection — handshake, cumulative ACKs, packet loss + retransmission and teardown.",
+    highlights: [
+      "Binary network/host bit breakdown; handles /31 and /32 edge cases",
+      "VLSM allocates largest-first on aligned boundaries",
+      "DNS-over-HTTPS with TTLs, NXDOMAIN and DNSSEC status",
+      "TCP state machine from SYN_SENT to TIME_WAIT",
+    ],
+    stack: ["TCP/IP", "Subnetting", "DNS", "DoH", "JavaScript"],
+    tests: 14,
+    live: pages("network-toolkit"),
+    repo: gh("network-toolkit"),
+    accent: "#2dd4bf",
   },
 ];
 

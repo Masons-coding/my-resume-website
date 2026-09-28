@@ -3,13 +3,14 @@ import "./CommandPalette.scss";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 import Icon from "../Icon/Icon.js";
-import { profile } from "../../data/resume";
+import { csProjects, profile } from "../../data/resume";
 import { confetti, copyEmail, openLink, scrollToId, sections } from "../../utils/actions";
 
 const actions = [
   ...sections.map((s) => ({ label: `Go to ${s.label}`, group: "Navigate", icon: "arrowRight", run: () => scrollToId(s.id) })),
   { label: "Launch Weather App (Python)", group: "Projects", icon: "sparkles", run: () => openLink("/weather/") },
   { label: "Visit Clean Earth Foundation", group: "Projects", icon: "external", run: () => openLink("https://www.cleanearthfoundation.com/") },
+  ...csProjects.map((p) => ({ label: `${p.icon} ${p.name}`, group: `CS Lab · ${p.area}`, icon: "external", run: () => openLink(p.live) })),
   { label: "Download resume (PDF)", group: "Links", icon: "download", run: () => window.open(profile.resumePdf, "_blank", "noopener") },
   { label: "Copy email address", group: "Links", icon: "copy", run: copyEmail },
   { label: "Open LinkedIn", group: "Links", icon: "linkedin", run: () => openLink(profile.linkedin) },

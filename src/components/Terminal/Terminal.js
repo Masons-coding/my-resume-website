@@ -2,7 +2,7 @@ import "./Terminal.scss";
 
 import { useEffect, useRef, useState } from "react";
 
-import { education, experience, profile, projects, skillGroups } from "../../data/resume";
+import { csProjects, education, experience, profile, projects, skillGroups } from "../../data/resume";
 import { confetti, copyEmail, openLink, scrollToId, sections } from "../../utils/actions";
 
 const FILES = ["about.txt", "experience.txt", "skills.txt", "projects.txt", "resume.pdf"];
@@ -14,6 +14,8 @@ const HELP = [
   "  experience        work history",
   "  skills            tech toolbox",
   "  projects          things I've built",
+  "  lab               computer-science projects (7 live demos)",
+  "  demo <name>       open a lab project, e.g. demo sql",
   "  education         schools & bootcamps",
   "  weather <city>    launch my Python weather app 🐍",
   "  contact           ways to reach me",
@@ -59,8 +61,21 @@ const run = (raw, history) => {
     case "projects":
       return [
         ...projects.map((p) => `▹ ${p.name.padEnd(24)} ${p.tagline}`),
+        `▹ ${"CS Lab".padEnd(24)} ${csProjects.length} more — type 'lab'`,
         "Tip: try `weather Ottawa` to run the Python app.",
       ];
+    case "lab":
+      return [
+        ...csProjects.map((p) => `${p.icon} ${p.area.padEnd(11)} ${p.name.padEnd(24)} ${String(p.tests).padStart(2)} tests`),
+        "Open one with `demo <name>`, e.g. `demo neural` or `demo network`.",
+      ];
+    case "demo": {
+      const q = arg.toLowerCase();
+      const match = q && csProjects.find((p) => p.id.includes(q) || p.name.toLowerCase().includes(q) || p.area.toLowerCase().includes(q));
+      if (!match) return [{ err: `demo: which one? Try: ${csProjects.map((p) => p.id.split("-")[0]).join(", ")}` }];
+      openLink(match.live);
+      return [`Launching ${match.name}…`];
+    }
     case "education":
       return education.map((e) => `▹ ${e.school} — ${e.program} (${e.period})`);
     case "contact":
@@ -114,7 +129,7 @@ const run = (raw, history) => {
 };
 
 const COMMANDS = [
-  "help", "whoami", "about", "experience", "skills", "projects", "education", "weather", "contact",
+  "help", "whoami", "about", "experience", "skills", "projects", "lab", "demo", "education", "weather", "contact",
   "email", "linkedin", "github", "resume", "goto", "ls", "cat", "neofetch", "date", "echo", "history",
   "clear", "sudo", "coffee",
 ];
@@ -169,7 +184,7 @@ const Terminal = () => {
     }
   };
 
-  const quick = ["help", "whoami", "projects", "weather Toronto", "neofetch", "sudo hire-mason"];
+  const quick = ["help", "whoami", "lab", "weather Toronto", "neofetch", "sudo hire-mason"];
 
   return (
     <section id="terminal" className="section terminal-section">

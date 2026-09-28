@@ -41,17 +41,22 @@
       background: linear-gradient(145deg, rgba(0, 173, 255, 0.08), rgba(2, 6, 23, 0.5));
       text-align: center;
       color: $muted;
-      line-height: 1.2;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      line-height: 1.25;
     }
 
     b {
       display: block;
-      margin-bottom: 0.28rem;
+      margin-bottom: 0.3rem;
       font-family: $font-mono;
       color: $white;
-      font-size: clamp(1.35rem, 3vw, 1.7rem);
+      font-size: clamp(1.45rem, 3vw, 1.8rem);
       line-height: 1;
       font-variant-numeric: tabular-nums;
+      letter-spacing: -0.03em;
     }
 
     @include mobile {

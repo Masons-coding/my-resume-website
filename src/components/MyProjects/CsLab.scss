@@ -19,26 +19,58 @@
   &__head .projects__note {
     max-width: 40rem;
     margin-bottom: 0;
+    line-height: 1.65;
   }
 
   &__stats {
-    display: flex;
-    gap: 0.6rem;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(6rem, 1fr));
+    gap: 0.65rem;
+    width: min(100%, 22rem);
 
     span {
-      font-size: 0.85rem;
-      color: $muted;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 5.25rem;
+      padding: 0.75rem 0.65rem;
       border: 1px solid $border;
-      border-radius: 999px;
-      padding: 0.35rem 0.8rem;
-      background: rgba(21, 114, 182, 0.12);
+      border-radius: 0.85rem;
+      background: linear-gradient(145deg, rgba(0, 173, 255, 0.08), rgba(2, 6, 23, 0.5));
+      text-align: center;
+      color: $muted;
+      line-height: 1.2;
     }
 
     b {
+      display: block;
+      margin-bottom: 0.28rem;
       font-family: $font-mono;
-      color: $cyan;
-      font-size: 1rem;
+      color: $white;
+      font-size: clamp(1.35rem, 3vw, 1.7rem);
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+    }
+
+    @include mobile {
+      width: 100%;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    @media (max-width: 420px) {
+      grid-template-columns: 1fr;
+      
+      span {
+        min-height: 3.8rem;
+        flex-direction: row;
+        gap: 0.55rem;
+      }
+
+      b {
+        margin-bottom: 0;
+      }
     }
   }
 

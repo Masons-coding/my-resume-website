@@ -394,12 +394,6 @@
   }
 }
 
-@media (max-width: 430px) {
-  .promo-showcase__grid {
-    grid-template-columns: 1fr;
-  }
-}
-
 @keyframes promo-sweep {
   0%,
   45% {

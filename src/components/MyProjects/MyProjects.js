@@ -7,6 +7,7 @@ import weatherLogo from "../../assets/images/weather-icon.svg";
 import masonLogo from "../../assets/images/Mason-logo.svg";
 import Icon from "../Icon/Icon.js";
 import CsLab from "./CsLab.js";
+import WorkMedia from "./WorkMedia.js";
 import { otherWork, projects } from "../../data/resume";
 import { openLink, prefersReducedMotion } from "../../utils/actions";
 
@@ -216,6 +217,7 @@ const MyProjects = () => {
               <p className="work__org">{w.org}</p>
               <p className="work__desc">{w.description}</p>
               {w.demo === "countdown" && <CountdownDemo />}
+              {w.media && <WorkMedia media={w.media} title={w.name} />}
               <div className="tag-list">
                 {w.stack.map((t) => (
                   <span key={t} className="tag">

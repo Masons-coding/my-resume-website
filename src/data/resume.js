@@ -330,6 +330,13 @@ export const otherWork = [
     impact: "100+ hours saved per project",
     stack: ["AI-assisted dev", "Automation", "SQL", "QA"],
     badge: "Internal",
+    media: {
+      type: "image",
+      src: "/media/tokenscope.webp",
+      alt: "TokenScope internal QA tool: pick locales and checks, then run automated link verification",
+      caption:
+        "TokenScope opens every offer link in every locale and flags exposed text-keys, translation gaps, broken layouts, accessibility and link/image health before release. Links redacted.",
+    },
   },
   {
     id: "promo",
@@ -351,5 +358,11 @@ export const otherWork = [
     impact: "🏆 1st place",
     stack: ["Product thinking", "UX", "Data", "Pitching"],
     badge: "Winner",
+    media: {
+      type: "video",
+      src: "/media/airmiles-genz.mp4",
+      poster: "/media/airmiles-genz-poster.jpg",
+      caption: "Prototype walkthrough: personalized offers and offer swapping for Gen-Z members",
+    },
   },
 ];

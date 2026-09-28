@@ -13,7 +13,7 @@ export const scrollToId = (id) => {
   if (el) el.scrollIntoView({ behavior: prefersReducedMotion() ? "auto" : "smooth", block: "start" });
 };
 
-export const openLink = (url) => window.open(url, "_blank", "noopener,noreferrer");
+export const openLink = (url) => window.open(url, "_blank", "noopener");
 
 export const copyEmail = async () => {
   try {

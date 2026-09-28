@@ -13,7 +13,7 @@ export const profile = {
   location: "Ottawa, Ontario",
   timeZone: "America/Toronto",
   email: "maclarkegdci@gmail.com",
-  linkedin: "https://www.linkedin.com/in/mason-clarke/",
+  linkedin: "https://www.linkedin.com/in/mason-clarke",
   github: "https://github.com/Masons-coding",
   repo: "https://github.com/Masons-coding/my-resume-website",
   resumePdf: "/Mason-Clarke-Resume.pdf",

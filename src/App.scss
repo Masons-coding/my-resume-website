@@ -38,6 +38,21 @@ a {
 button {
   font: inherit;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+img,
+video,
+svg {
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  text-wrap: pretty;
 }
 
 :focus-visible {
@@ -96,6 +111,7 @@ button {
     display: inline-block;
     border-bottom: 4px solid $cyan;
     padding-bottom: 0.4rem;
+    text-wrap: balance;
   }
 }
 

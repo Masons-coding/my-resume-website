@@ -17,7 +17,14 @@ const Education = () => {
               <span className="education__icon">
                 <Icon name="cap" size={22} />
               </span>
-              <p className="education__period">{e.period}</p>
+              <div className="education__meta">
+                <p className="education__period">{e.period}</p>
+                {e.gpa && (
+                  <span className="education__gpa">
+                    <span>GPA</span> {e.gpa}
+                  </span>
+                )}
+              </div>
               <h3 className="education__school">{e.school}</h3>
               <p className="education__program">{e.program}</p>
               <p className="education__detail">{e.detail}</p>

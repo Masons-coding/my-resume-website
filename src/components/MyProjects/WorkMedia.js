@@ -23,7 +23,7 @@ const MediaViewer = ({ media, title, open, onClose }) => {
             <Icon name="close" />
           </button>
           {media.type === "video" ? (
-            <video className="media-viewer__media" src={media.src} poster={media.poster} controls autoPlay muted loop playsInline />
+            <video className="media-viewer__media" src={media.src} poster={media.poster} controls playsInline preload="metadata" />
           ) : (
             <img className="media-viewer__media" src={media.src} alt={media.alt || title} />
           )}
@@ -54,12 +54,17 @@ const WorkMedia = ({ media, title }) => {
   }, []);
 
   const label = media.type === "video" ? "Watch full demo" : "View full size";
+  const showPoster = media.type === "video" && media.poster && media.previewPoster !== false;
 
   return (
     <>
       <button type="button" className={`work-media work-media--${media.type}`} onClick={() => setOpen(true)} aria-label={`${label}: ${title}`}>
         {media.type === "video" ? (
-          <video ref={videoRef} src={media.src} poster={media.poster} muted loop playsInline preload="metadata" aria-hidden="true" />
+          showPoster ? (
+            <img className="work-media__poster" src={media.poster} alt="" loading="lazy" />
+          ) : (
+            <video ref={videoRef} src={media.src} poster={media.poster} muted loop playsInline preload="metadata" aria-hidden="true" />
+          )
         ) : (
           <img src={media.src} alt={media.alt || title} loading="lazy" />
         )}

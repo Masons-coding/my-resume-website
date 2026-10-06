@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Percentage Calculator | DailyCalc</title>
+<meta name="description" content="Five of the percentage questions people ask most, in one place: what is X% of Y, X is what percent of Y, percentage change, and increase or decrease a numb">
+<meta name="theme-color" content="#0b7a5a">
+<link rel="canonical" href="https://masons-coding.github.io/daily-calc/percentage-calculator/">
+<meta property="og:title" content="Percentage Calculator | DailyCalc"><meta property="og:description" content="Five of the percentage questions people ask most, in one place: what is X% of Y, X is what percent of Y, percentage change, and increase or decrease a numb"><meta property="og:type" content="website"><meta property="og:url" content="https://masons-coding.github.io/daily-calc/percentage-calculator/">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%20100%20100'%3E%3Crect%20width%3D'100'%20height%3D'100'%20rx%3D'22'%20fill%3D'%230b7a5a'%2F%3E%3Ctext%20x%3D'50'%20y%3D'68'%20font-size%3D'56'%20text-anchor%3D'middle'%3E%F0%9F%A7%AE%3C%2Ftext%3E%3C%2Fsvg%3E">
+<link rel="stylesheet" href="../assets/base.css">
+<style>:root{--accent:#0b7a5a;--accent-soft:#e3f5ee}:root[data-theme="dark"]{--accent:#34d399;--accent-soft:#10291f}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--accent:#34d399;--accent-soft:#10291f}}</style>
+<script src="../assets/site-config.js"></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I calculate a discount?","acceptedAnswer":{"@type":"Answer","text":"Use \"Decrease Y by X%\" - or try the Discount & Sales Tax calculator."}},{"@type":"Question","name":"What if the starting value is negative?","acceptedAnswer":{"@type":"Answer","text":"Percent change uses the absolute value of the starting number so the direction stays meaningful."}},{"@type":"Question","name":"How many decimals are shown?","acceptedAnswer":{"@type":"Answer","text":"Up to six, with trailing zeros removed."}}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><div class="container">
+<a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">🧮</span>DailyCalc</a>
+<button class="icon-btn menu-btn" id="menu-btn" aria-expanded="false" aria-controls="nav" aria-label="Menu">&#9776;</button>
+<nav class="nav" id="nav" aria-label="Main"><a href="../index.html#calculators">Calculators</a><a href="../guides/">Guides</a><a href="../mortgage-calculator/">Mortgage</a><a href="../tip-calculator/">Tip</a><a href="../percentage-calculator/" aria-current="page">Percentage</a><button class="icon-btn" id="theme-btn" aria-label="Toggle dark mode" title="Toggle dark mode">&#9790;</button></nav>
+</div></header>
+<main id="main"><div class="container"><nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Home</a> / <a href="../index.html#calculators">Calculators</a> / <span>Percentage Calculator</span></nav><h1>Percentage Calculator</h1><p class="lead">Five of the percentage questions people ask most, in one place: what is X% of Y, X is what percent of Y, percentage change, and increase or decrease a number by a percent.</p><div class="ad" data-ad="top" hidden aria-label="Advertisement"></div>
+<div class="tool"><form class="panel" id="calc-form" data-calc="percent" novalidate aria-label="Percentage Calculator"><div class="fields"><div><label for="f-mode">What do you want to know?</label><select id="f-mode" name="mode"><option value="of" selected>What is X% of Y?</option><option value="is">X is what % of Y?</option><option value="change">% change from X to Y</option><option value="up">Increase Y by X%</option><option value="down">Decrease Y by X%</option></select></div><div><label for="f-x">X</label><input id="f-x" name="x" type="number" inputmode="decimal" value="15" step="any"></div><div><label for="f-y">Y</label><input id="f-y" name="y" type="number" inputmode="decimal" value="200" step="any"></div></div><div class="row"><button type="submit" class="btn">Calculate</button><button type="button" class="btn ghost" id="calc-reset">Reset</button></div></form>
+<div class="panel" id="calc-out" aria-live="polite"><p class="muted">Your result will appear here.</p></div></div>
+<noscript><p class="callout warn">This calculator needs JavaScript. Everything runs in your browser; nothing is sent anywhere.</p></noscript>
+<article class="prose full"><h2>The formulas</h2><ul><li><strong>X% of Y</strong> = X &divide; 100 &times; Y. Example: 15% of 200 is 30.</li><li><strong>X is what % of Y</strong> = X &divide; Y &times; 100. Example: 30 is 15% of 200.</li><li><strong>Percentage change</strong> = (new &minus; old) &divide; |old| &times; 100. Going from 50 to 75 is +50%.</li><li><strong>Increase by X%</strong> = Y &times; (1 + X/100). <strong>Decrease</strong> = Y &times; (1 &minus; X/100).</li></ul><div class="ad" data-ad="mid" hidden aria-label="Advertisement"></div><h2>Percent change is not symmetrical</h2><p>If a price rises 50% and then falls 50%, you do not return to the start: 100 becomes 150 and then 75. A fall of 33.3% is needed to undo a 50% rise. This is why percent change always depends on which number you start from.</p><h2>Percentage points vs percent</h2><p>If an interest rate goes from 4% to 5%, it rose by one <em>percentage point</em> but by 25 <em>percent</em> relative to the old rate. News stories often mix these up, so check which one is meant.</p><section><h2>Frequently asked questions</h2><details class="faq"><summary>How do I calculate a discount?</summary><p>Use "Decrease Y by X%" - or try the Discount & Sales Tax calculator.</p></details><details class="faq"><summary>What if the starting value is negative?</summary><p>Percent change uses the absolute value of the starting number so the direction stays meaningful.</p></details><details class="faq"><summary>How many decimals are shown?</summary><p>Up to six, with trailing zeros removed.</p></details></section></article>
+<section><h2>More calculators</h2><div class="grid"><a class="card" href="../discount-sales-tax-calculator/"><span class="emoji" aria-hidden="true">🏷️</span><h3>Discount &amp; Sales Tax</h3><p>Sale price after a discount and tax - or take tax back out of a total.</p></a><a class="card" href="../tip-calculator/"><span class="emoji" aria-hidden="true">🍽️</span><h3>Tip &amp; Bill Split</h3><p>Work out the tip and split the bill evenly between friends.</p></a><a class="card" href="../compound-interest-calculator/"><span class="emoji" aria-hidden="true">📈</span><h3>Compound Interest &amp; Savings</h3><p>See how savings or an investment can grow with regular deposits and compound interest.</p></a></div></section><div class="ad" data-ad="bottom" hidden aria-label="Advertisement"></div>
+</div></main>
+<footer class="site-footer"><div class="container">
+<div class="cols">
+<div><h4>DailyCalc</h4><p class="muted">Free, fast calculators for everyday life: mortgage and loan payments, tips, percentages, BMI, savings growth, unit conversion, dates, salary and more.</p></div>
+<div><h4>Explore</h4><ul><li><a href="../index.html#calculators">Calculators</a></li><li><a href="../guides/">Guides</a></li><li><a href="../mortgage-calculator/">Mortgage</a></li><li><a href="../tip-calculator/">Tip</a></li><li><a href="../percentage-calculator/">Percentage</a></li></ul></div>
+<div><h4>More free sites</h4><ul><li><a href="https://masons-coding.github.io/ai-pulse/">AI Pulse</a></li><li><a href="https://masons-coding.github.io/daily-brief/">Daily Brief</a></li><li><a href="https://masons-coding.github.io/dev-pocket/">DevPocket</a></li><li><a href="https://masons-coding.github.io/eco-steps/">EcoSteps</a></li></ul></div>
+<div><h4>Info</h4><ul><li><a href="../about/">About</a></li><li><a href="../privacy/">Privacy policy</a></li><li><a href="../terms/">Terms</a></li><li><a href="../contact/">Contact</a></li><li><a href="#" id="ads-settings">Ad choices</a></li></ul></div>
+</div>
+<p class="footnote">&copy; <span id="year">2026</span> DailyCalc - a Masons-coding project. Free to use. Information is general and not professional advice.</p>
+</div></footer>
+<div class="consent" id="consent" hidden role="dialog" aria-label="Ad preferences"><div class="inner"><p>We would like to show ads to keep this site free. Ads may use cookies. Your choice is saved only on this device. Nothing ad-related loads unless you accept.</p><div class="row"><button class="btn" id="consent-yes">Accept ads</button><button class="btn ghost" id="consent-no">No thanks</button></div></div></div>
+<script src="../assets/core.js"></script>
+<script src="../assets/calcs.js"></script>
+<script src="../assets/calc-ui.js"></script>
+</body></html>

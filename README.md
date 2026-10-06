@@ -11,14 +11,12 @@ A React portfolio with no UI libraries: hand-built components and SCSS.
 - **Interactive terminal** — try `help`, `neofetch`, `weather Tokyo` or `sudo hire-mason`
 - **Experience timeline**, filterable **skills** and 3D-tilt **project cards** with detail modals
 - **Hosted Python app** at [`/weather/`](https://masons-resume-website.netlify.app/weather/) (see below)
-- **Computer Science Lab**: seven live projects, one per core CS area, each its own repo with unit tests and CI:
-  [Algorithm Visualizer](https://github.com/Masons-coding/algorithm-visualizer) ·
-  [SQL Query Lab](https://github.com/Masons-coding/sql-query-lab) ·
-  [OS Scheduler Simulator](https://github.com/Masons-coding/os-scheduler-sim) ·
-  [Neural Net From Scratch](https://github.com/Masons-coding/neural-net-from-scratch) ·
-  [Security Lab](https://github.com/Masons-coding/security-lab) ·
-  [Maple Language](https://github.com/Masons-coding/mini-lang-interpreter) ·
-  [Network Toolkit](https://github.com/Masons-coding/network-toolkit)
+- **Five live websites** (ad-supported, responsive 320-3000px), each its own GitHub repo with automated tests and hosted under this site:
+  [AI Pulse](/ai-pulse/) (AI news) ·
+  [Daily Brief](/daily-brief/) (news, weather, history) ·
+  [DailyCalc](/daily-calc/) (everyday calculators) ·
+  [DevPocket](/dev-pocket/) (developer tools) ·
+  [EcoSteps](/eco-steps/) (eco tools & guides)
 - Easter eggs: the Konami code (↑↑↓↓←→←→BA) and a clickable hackathon trophy 🎉
 - Respects `prefers-reduced-motion`; keyboard accessible
 

@@ -7,8 +7,7 @@ import weatherLogo from "../../assets/images/weather-icon.svg";
 import masonLogo from "../../assets/images/Mason-logo.svg";
 import Icon from "../Icon/Icon.js";
 import CsLab from "./CsLab.js";
-import WorkMedia from "./WorkMedia.js";
-import { otherWork, projects } from "../../data/resume";
+import { projects } from "../../data/resume";
 import { openLink, prefersReducedMotion } from "../../utils/actions";
 
 const logos = { "clean-earth": cleanEarthLogo, weather: weatherLogo, mc: masonLogo };
@@ -108,61 +107,6 @@ const ProjectModal = ({ project, onClose }) => {
   );
 };
 
-// Recreation of the promo countdown clocks I build at work (demo only — no partner code).
-const CountdownDemo = () => {
-  const [left, setLeft] = useState(null);
-
-  useEffect(() => {
-    const tick = () => {
-      const now = new Date();
-      const end = new Date(now);
-      end.setHours(24, 0, 0, 0);
-      setLeft(Math.floor((end - now) / 1000));
-    };
-    tick();
-    const timer = setInterval(tick, 1000);
-    return () => clearInterval(timer);
-  }, []);
-
-  if (left === null) return null;
-  const parts = [Math.floor(left / 3600), Math.floor((left % 3600) / 60), left % 60];
-
-  return (
-    <div className="promo-showcase" aria-label="Promotional landing page demo">
-      <div className="countdown">
-        <div className="countdown__copy">
-          <span className="countdown__eyebrow">Limited-time offer</span>
-          <p className="countdown__label">✈️ Upgrade offer ends in</p>
-        </div>
-        <div className="countdown__clock">
-          {parts.map((n, i) => (
-            <span key={i} className="countdown__unit">
-              <b>{String(n).padStart(2, "0")}</b>
-              <small>{["hrs", "min", "sec"][i]}</small>
-            </span>
-          ))}
-        </div>
-      </div>
-
-      <div className="promo-showcase__grid">
-        <div className="promo-demo promo-demo--banner">
-          <span className="promo-demo__kicker">Bonus offer</span>
-          <strong>15,000 bonus points</strong>
-          <span>Activate before midnight</span>
-        </div>
-        <div className="promo-demo promo-demo--offer">
-          <div>
-            <span className="promo-demo__kicker">Partner upgrade</span>
-            <strong>Earn 10× points</strong>
-            <span>On your next eligible purchase</span>
-          </div>
-          <span className="promo-demo__pill">Activate</span>
-        </div>
-      </div>
-    </div>
-  );
-};
-
 const MyProjects = () => {
   const [selected, setSelected] = useState(null);
 
@@ -224,31 +168,6 @@ const MyProjects = () => {
         </div>
 
         <CsLab onDetails={setSelected} />
-
-        <h3 className="projects__subhead reveal">Professional & hackathon work</h3>
-        <p className="projects__note reveal">Proprietary or event projects — described here, code not public.</p>
-        <div className="projects__other">
-          {otherWork.map((w) => (
-            <article key={w.id} className="work card reveal">
-              <div className="work__head">
-                <span className="work__badge">{w.badge}</span>
-                <span className="work__impact">{w.impact}</span>
-              </div>
-              <h4 className="work__name">{w.name}</h4>
-              <p className="work__org">{w.org}</p>
-              <p className="work__desc">{w.description}</p>
-              {w.demo === "countdown" && <CountdownDemo />}
-              {w.media && <WorkMedia media={w.media} title={w.name} />}
-              <div className="tag-list">
-                {w.stack.map((t) => (
-                  <span key={t} className="tag">
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </article>
-          ))}
-        </div>
       </div>
 
       <ProjectModal project={selected} onClose={() => setSelected(null)} />

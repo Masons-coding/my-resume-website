@@ -2,7 +2,7 @@ import "./Terminal.scss";
 
 import { useEffect, useRef, useState } from "react";
 
-import { csProjects, education, experience, profile, projects, skillGroups } from "../../data/resume";
+import { websites, education, experience, profile, projects, skillGroups } from "../../data/resume";
 import { confetti, copyEmail, openLink, scrollToId, sections } from "../../utils/actions";
 
 const FILES = ["about.txt", "experience.txt", "skills.txt", "projects.txt", "resume.pdf"];
@@ -14,7 +14,7 @@ const HELP = [
   "  experience        work history",
   "  skills            tech toolbox",
   "  projects          things I've built",
-  "  lab               computer-science projects (7 live demos)",
+  "  lab               my 5 live websites",
   "  demo <name>       open a lab project, e.g. demo sql",
   "  education         schools & bootcamps",
   "  weather <city>    launch my Python weather app 🐍",
@@ -61,18 +61,18 @@ const run = (raw, history) => {
     case "projects":
       return [
         ...projects.map((p) => `▹ ${p.name.padEnd(24)} ${p.tagline}`),
-        `▹ ${"CS Lab".padEnd(24)} ${csProjects.length} more — type 'lab'`,
+        `▹ ${"Live websites".padEnd(24)} ${websites.length} more — type 'lab'`,
         "Tip: try `weather Ottawa` to run the Python app.",
       ];
     case "lab":
       return [
-        ...csProjects.map((p) => `${p.icon} ${p.area.padEnd(11)} ${p.name.padEnd(24)} ${String(p.tests).padStart(2)} tests`),
-        "Open one with `demo <name>`, e.g. `demo neural` or `demo network`.",
+        ...websites.map((p) => `${p.icon} ${p.area.padEnd(11)} ${p.name.padEnd(24)} `),
+        "Open one with `demo <name>`, e.g. `demo pulse` or `demo calc`.",
       ];
     case "demo": {
       const q = arg.toLowerCase();
-      const match = q && csProjects.find((p) => p.id.includes(q) || p.name.toLowerCase().includes(q) || p.area.toLowerCase().includes(q));
-      if (!match) return [{ err: `demo: which one? Try: ${csProjects.map((p) => p.id.split("-")[0]).join(", ")}` }];
+      const match = q && websites.find((p) => p.id.includes(q) || p.name.toLowerCase().includes(q) || p.area.toLowerCase().includes(q));
+      if (!match) return [{ err: `demo: which one? Try: ${websites.map((p) => p.id.split("-")[0]).join(", ")}` }];
       openLink(match.live);
       return [`Launching ${match.name}…`];
     }

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Unit Converter | DailyCalc</title>
+<meta name="description" content="Convert between metric and imperial units instantly: length, weight, volume, speed, area, temperature and time. Every other unit of the same type is shown ">
+<meta name="theme-color" content="#0b7a5a">
+<link rel="canonical" href="https://masons-coding.github.io/daily-calc/unit-converter/">
+<meta property="og:title" content="Unit Converter | DailyCalc"><meta property="og:description" content="Convert between metric and imperial units instantly: length, weight, volume, speed, area, temperature and time. Every other unit of the same type is shown "><meta property="og:type" content="website"><meta property="og:url" content="https://masons-coding.github.io/daily-calc/unit-converter/">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%20100%20100'%3E%3Crect%20width%3D'100'%20height%3D'100'%20rx%3D'22'%20fill%3D'%230b7a5a'%2F%3E%3Ctext%20x%3D'50'%20y%3D'68'%20font-size%3D'56'%20text-anchor%3D'middle'%3E%F0%9F%A7%AE%3C%2Ftext%3E%3C%2Fsvg%3E">
+<link rel="stylesheet" href="../assets/base.css">
+<style>:root{--accent:#0b7a5a;--accent-soft:#e3f5ee}:root[data-theme="dark"]{--accent:#34d399;--accent-soft:#10291f}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--accent:#34d399;--accent-soft:#10291f}}</style>
+<script src="../assets/site-config.js"></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How precise is it?","acceptedAnswer":{"@type":"Answer","text":"Conversion factors are the exact or internationally accepted values and results show up to 8 significant decimals."}},{"@type":"Question","name":"Why do some results show many digits?","acceptedAnswer":{"@type":"Answer","text":"Small units like millimetres produce large numbers. Use the table to pick the unit that suits you."}},{"@type":"Question","name":"Can I swap from and to?","acceptedAnswer":{"@type":"Answer","text":"Yes, press the swap button."}}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><div class="container">
+<a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">🧮</span>DailyCalc</a>
+<button class="icon-btn menu-btn" id="menu-btn" aria-expanded="false" aria-controls="nav" aria-label="Menu">&#9776;</button>
+<nav class="nav" id="nav" aria-label="Main"><a href="../index.html#calculators">Calculators</a><a href="../guides/">Guides</a><a href="../mortgage-calculator/">Mortgage</a><a href="../tip-calculator/">Tip</a><a href="../percentage-calculator/">Percentage</a><button class="icon-btn" id="theme-btn" aria-label="Toggle dark mode" title="Toggle dark mode">&#9790;</button></nav>
+</div></header>
+<main id="main"><div class="container"><nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Home</a> / <a href="../index.html#calculators">Calculators</a> / <span>Unit Converter</span></nav><h1>Unit Converter</h1><p class="lead">Convert between metric and imperial units instantly: length, weight, volume, speed, area, temperature and time. Every other unit of the same type is shown too, so you can see the whole picture at once.</p><div class="ad" data-ad="top" hidden aria-label="Advertisement"></div>
+<div class="tool"><form class="panel" id="calc-form" data-calc="units" novalidate aria-label="Unit Converter"><div class="fields"><div><label for="f-cat">Type</label><select id="f-cat" name="cat"><option value="length" selected>Length</option><option value="mass">Mass</option><option value="volume">Volume</option><option value="speed">Speed</option><option value="area">Area</option><option value="temperature">Temperature</option><option value="time">Time</option></select></div><div><label for="f-value">Value</label><input id="f-value" name="value" type="number" inputmode="decimal" value="1" step="any"></div><div><label for="f-from">From</label><select id="f-from" name="from"><option>mi</option></select></div><div><label for="f-to">To</label><select id="f-to" name="to"><option>km</option></select></div></div><div class="row"><button type="button" class="btn ghost small" id="calc-swap">Swap from / to</button><button type="submit" class="btn">Calculate</button><button type="button" class="btn ghost" id="calc-reset">Reset</button></div></form>
+<div class="panel" id="calc-out" aria-live="polite"><p class="muted">Your result will appear here.</p></div></div>
+<noscript><p class="callout warn">This calculator needs JavaScript. Everything runs in your browser; nothing is sent anywhere.</p></noscript>
+<article class="prose full"><h2>Common conversions to remember</h2><ul><li>1 inch = 2.54 centimetres exactly</li><li>1 mile = 1.609344 kilometres</li><li>1 kilogram &asymp; 2.2046 pounds</li><li>1 US gallon = 3.785 litres; 1 UK (imperial) gallon = 4.546 litres</li><li>0&deg;C = 32&deg;F; 100&deg;C = 212&deg;F; 0 K = &minus;273.15&deg;C</li></ul><div class="ad" data-ad="mid" hidden aria-label="Advertisement"></div><h2>US vs UK gallons and cups</h2><p>The US and UK gallon are different sizes, which causes real confusion with fuel economy (mpg). This tool lists both so you can pick the right one. US cups here are the legal US cup of 236.588 ml.</p><h2>Temperature is different</h2><p>Temperature scales have different zero points, so converting is not just multiplying. Fahrenheit = Celsius &times; 9/5 + 32. Kelvin = Celsius + 273.15.</p><section><h2>Frequently asked questions</h2><details class="faq"><summary>How precise is it?</summary><p>Conversion factors are the exact or internationally accepted values and results show up to 8 significant decimals.</p></details><details class="faq"><summary>Why do some results show many digits?</summary><p>Small units like millimetres produce large numbers. Use the table to pick the unit that suits you.</p></details><details class="faq"><summary>Can I swap from and to?</summary><p>Yes, press the swap button.</p></details></section></article>
+<section><h2>More calculators</h2><div class="grid"><a class="card" href="../bmi-calculator/"><span class="emoji" aria-hidden="true">⚖️</span><h3>BMI</h3><p>Body mass index for adults in metric or imperial units, with the healthy weight range for your height.</p></a><a class="card" href="../fuel-cost-calculator/"><span class="emoji" aria-hidden="true">⛽</span><h3>Fuel Cost &amp; Trip</h3><p>What a road trip will cost in fuel, and the cost per person - metric (L/100 km) or imperial (mpg).</p></a><a class="card" href="../percentage-calculator/"><span class="emoji" aria-hidden="true">％</span><h3>Percentage</h3><p>Percent of a number, percent change, what percent is X of Y, and increase or decrease by a percent.</p></a></div></section><div class="ad" data-ad="bottom" hidden aria-label="Advertisement"></div>
+</div></main>
+<footer class="site-footer"><div class="container">
+<div class="cols">
+<div><h4>DailyCalc</h4><p class="muted">Free, fast calculators for everyday life: mortgage and loan payments, tips, percentages, BMI, savings growth, unit conversion, dates, salary and more.</p></div>
+<div><h4>Explore</h4><ul><li><a href="../index.html#calculators">Calculators</a></li><li><a href="../guides/">Guides</a></li><li><a href="../mortgage-calculator/">Mortgage</a></li><li><a href="../tip-calculator/">Tip</a></li><li><a href="../percentage-calculator/">Percentage</a></li></ul></div>
+<div><h4>More free sites</h4><ul><li><a href="https://masons-coding.github.io/ai-pulse/">AI Pulse</a></li><li><a href="https://masons-coding.github.io/daily-brief/">Daily Brief</a></li><li><a href="https://masons-coding.github.io/dev-pocket/">DevPocket</a></li><li><a href="https://masons-coding.github.io/eco-steps/">EcoSteps</a></li></ul></div>
+<div><h4>Info</h4><ul><li><a href="../about/">About</a></li><li><a href="../privacy/">Privacy policy</a></li><li><a href="../terms/">Terms</a></li><li><a href="../contact/">Contact</a></li><li><a href="#" id="ads-settings">Ad choices</a></li></ul></div>
+</div>
+<p class="footnote">&copy; <span id="year">2026</span> DailyCalc - a Masons-coding project. Free to use. Information is general and not professional advice.</p>
+</div></footer>
+<div class="consent" id="consent" hidden role="dialog" aria-label="Ad preferences"><div class="inner"><p>We would like to show ads to keep this site free. Ads may use cookies. Your choice is saved only on this device. Nothing ad-related loads unless you accept.</p><div class="row"><button class="btn" id="consent-yes">Accept ads</button><button class="btn ghost" id="consent-no">No thanks</button></div></div></div>
+<script src="../assets/core.js"></script>
+<script src="../assets/calcs.js"></script>
+<script src="../assets/calc-ui.js"></script>
+</body></html>

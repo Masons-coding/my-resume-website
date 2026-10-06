@@ -3,41 +3,39 @@ import "./CsLab.scss";
 import { useState } from "react";
 
 import Icon from "../Icon/Icon.js";
-import { csProjects } from "../../data/resume";
+import { websites } from "../../data/resume";
 import { openLink } from "../../utils/actions";
 
-const areas = ["All", ...new Set(csProjects.map((p) => p.area))];
-const totalTests = csProjects.reduce((n, p) => n + p.tests, 0);
+const areas = ["All", ...new Set(websites.map((p) => p.area))];
 
-// Shape a CS project the way the shared details modal expects
-const toModal = (p) => ({ ...p, liveLabel: "Launch live demo", repos: [{ label: "Source", url: p.repo }] });
+// Shape a website the way the shared details modal expects
+const toModal = (p) => ({ ...p, liveLabel: "Open website", repos: [{ label: "Source", url: p.repo }] });
 
 const CsLab = ({ onDetails }) => {
   const [area, setArea] = useState("All");
-  const visible = area === "All" ? csProjects : csProjects.filter((p) => p.area === area);
+  const visible = area === "All" ? websites : websites.filter((p) => p.area === area);
 
   return (
     <div className="cslab">
       <div className="cslab__head reveal">
         <div>
-          <h3 className="projects__subhead cslab__title">Computer Science Lab</h3>
+          <h3 className="projects__subhead cslab__title">Live websites</h3>
           <p className="projects__note">
-            One interactive project for each core area of CS, all running live in the browser. Each is its own GitHub repo with
-            unit tests and CI.
+            Five free, responsive websites built for real visitors: news, everyday tools and eco guides, each its own GitHub repo with automated tests.
           </p>
         </div>
-        <div className="cslab__stats" aria-label="Computer Science Lab metrics">
+        <div className="cslab__stats" aria-label="Websites metrics">
           <div className="cslab__stat">
-            <b>{csProjects.length}</b>
-            <span>live projects</span>
+            <b>{websites.length}</b>
+            <span>live websites</span>
           </div>
           <div className="cslab__stat">
-            <b>{totalTests}</b>
-            <span>unit tests</span>
+            <b>320-3000</b>
+            <span>px responsive</span>
           </div>
           <div className="cslab__stat">
-            <b>0</b>
-            <span>servers</span>
+            <b>$0</b>
+            <span>hosting cost</span>
           </div>
         </div>
       </div>
@@ -71,7 +69,7 @@ const CsLab = ({ onDetails }) => {
             </div>
             <div className="lab-card__foot">
               <button className="btn btn--primary btn--small" onClick={() => openLink(p.live)}>
-                Live demo <Icon name="external" size={14} />
+                Visit site <Icon name="external" size={14} />
               </button>
               <button className="btn btn--small" onClick={() => openLink(p.repo)} aria-label={`${p.name} source on GitHub`}>
                 <Icon name="github" size={14} /> Code
@@ -79,9 +77,6 @@ const CsLab = ({ onDetails }) => {
               <button className="project__more" onClick={() => onDetails(toModal(p))}>
                 <Icon name="info" size={16} /> Details
               </button>
-              <span className="lab-card__tests" title={`${p.tests} automated tests run in CI on every push`}>
-                ✓ {p.tests} tests
-              </span>
             </div>
           </article>
         ))}

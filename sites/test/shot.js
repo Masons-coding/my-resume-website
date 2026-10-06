@@ -1,0 +1,5 @@
+const http=require('http'),fs=require('fs'),path=require('path');const pw=require('/opt/node22/lib/node_modules/playwright');
+const [slug,page,w,out]=process.argv.slice(2);const dir=path.join(__dirname,'..','dist',slug);
+const M={'.html':'text/html','.css':'text/css','.js':'text/javascript','.json':'application/json'};
+const s=http.createServer((q,r)=>{let p=q.url.split('?')[0];if(p.endsWith('/'))p+='index.html';const f=path.join(dir,p);if(!fs.existsSync(f)){r.writeHead(404);return r.end()}r.writeHead(200,{'content-type':M[path.extname(f)]||'text/plain'});fs.createReadStream(f).pipe(r)});
+s.listen(0,async()=>{const b=await pw.chromium.launch();const c=await b.newContext({viewport:{width:+w,height:900}});const p=await c.newPage();await p.route(/^https?:\/\/(?!127)/,r=>r.fulfill({status:200,body:'{}',contentType:'application/json'}));await p.goto(`http://127.0.0.1:${s.address().port}/${page}`);await p.waitForTimeout(400);await p.screenshot({path:out,fullPage:false});await b.close();s.close()});

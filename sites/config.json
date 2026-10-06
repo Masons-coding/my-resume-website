@@ -1,0 +1,33 @@
+{
+  "githubUser": "Masons-coding",
+  "pagesHost": "masons-coding.github.io",
+  "adsenseClient": "",
+  "slots": {
+    "top": "",
+    "mid": "",
+    "bottom": ""
+  },
+  "sites": {
+    "ai-pulse": {
+      "name": "AI Pulse",
+      "url": "https://masons-coding.github.io/ai-pulse/"
+    },
+    "daily-brief": {
+      "name": "Daily Brief",
+      "url": "https://masons-coding.github.io/daily-brief/"
+    },
+    "daily-calc": {
+      "name": "DailyCalc",
+      "url": "https://masons-coding.github.io/daily-calc/"
+    },
+    "dev-pocket": {
+      "name": "DevPocket",
+      "url": "https://masons-coding.github.io/dev-pocket/"
+    },
+    "eco-steps": {
+      "name": "EcoSteps",
+      "url": "https://masons-coding.github.io/eco-steps/"
+    }
+  },
+  "portfolioUrl": ""
+}

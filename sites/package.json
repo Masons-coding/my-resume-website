@@ -1,0 +1,14 @@
+{
+  "name": "masons-sites",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Five static, responsive, ad-ready websites: AI Pulse, Daily Brief, DailyCalc, DevPocket, EcoSteps",
+  "scripts": {
+    "build": "node build.js",
+    "news": "node tools/fetch-news.js",
+    "test:unit": "node --test test/calcs.test.js test/news.test.js test/eco.test.js test/tools.test.js",
+    "test:browser": "node test/interact.js && node test/interact2.js && node test/links.js",
+    "test:responsive": "for s in ai-pulse daily-brief daily-calc dev-pocket eco-steps; do node test/responsive.js $s || exit 1; done",
+    "test": "npm run build && npm run test:unit && npm run test:browser && npm run test:responsive"
+  }
+}
